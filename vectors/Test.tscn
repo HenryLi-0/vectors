@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwuluw8wn5wyt"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rvu7i"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("CompressedTexture2D_rvu7i")
+
+[node name="Node2D" type="Node2D" parent="."]
