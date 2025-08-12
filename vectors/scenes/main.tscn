@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cx2u62i2hp6qu"]
+[gd_scene load_steps=9 format=3 uid="uid://cx2u62i2hp6qu"]
 
 [ext_resource type="PackedScene" uid="uid://rk5fcw6h6i8e" path="res://scenes/field.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://ccfv0baqafufp" path="res://scenes/player.tscn" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://okd0sabswmfq" path="res://scenes/robots/1778/1778Robot.tscn" id="3_tefeu"]
 [ext_resource type="PackedScene" uid="uid://br8wsvxgw8856" path="res://scenes/venue.tscn" id="4_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://dves5borcvcdt" path="res://scenes/audio.tscn" id="5_tipki"]
+[ext_resource type="Script" uid="uid://b2x74n4x3cx2g" path="res://experiments/test_silly.gd" id="6_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://c3e25ll72rmot" path="res://assets/yr2025 - frc1155.glb" id="7_tipki"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_85g3d"]
+size = Vector3(0.8, 1.1, 0.8)
 
 [node name="Main" type="Node3D"]
 
@@ -23,3 +28,114 @@ shadow_enabled = true
 [node name="Venue" parent="." instance=ExtResource("4_o6xl0")]
 
 [node name="Audio" parent="." instance=ExtResource("5_tipki")]
+
+[node name="goofy robor" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.1, 0)
+mass = 75.0
+script = ExtResource("6_o6xl0")
+
+[node name="collision" type="CollisionShape3D" parent="goofy robor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("BoxShape3D_85g3d")
+
+[node name="yr2025 - frc1155" parent="goofy robor" instance=ExtResource("7_tipki")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="goofy robor"]
+transform = Transform3D(1, -3.09086e-08, -1.28028e-08, 3.09086e-08, 0.707107, 0.707107, -1.28028e-08, -0.707107, 0.707107, 0.0999994, 3, 1.5)
+
+[node name="goofy robor2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2.2, 0)
+collision_layer = 2
+collision_mask = 3
+
+[node name="collision" type="CollisionShape3D" parent="goofy robor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("BoxShape3D_85g3d")
+
+[node name="yr2025 - frc1155" parent="goofy robor2" instance=ExtResource("7_tipki")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="goofy robor3" type="RigidBody3D" parent="."]
+transform = Transform3D(0.563824, 0.786566, -0.251826, -0.496837, 0.0794592, -0.864199, -0.65974, 0.612372, 0.435596, -7.4, 2.8, 0)
+collision_layer = 2
+collision_mask = 3
+
+[node name="collision" type="CollisionShape3D" parent="goofy robor3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("BoxShape3D_85g3d")
+
+[node name="yr2025 - frc1155" parent="goofy robor3" instance=ExtResource("7_tipki")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="goofy robor4" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.416021, -0.78033, 0.466917, 0.625835, 0.126827, 0.769575, -0.65974, 0.612372, 0.435596, -5.9, 2.8, 0.7)
+collision_layer = 2
+collision_mask = 3
+
+[node name="collision" type="CollisionShape3D" parent="goofy robor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("BoxShape3D_85g3d")
+
+[node name="yr2025 - frc1155" parent="goofy robor4" instance=ExtResource("7_tipki")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="goofy robor5" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.416021, -0.78033, 0.466917, 0.625835, 0.126827, 0.769575, -0.65974, 0.612372, 0.435596, -7.9, 3.6, 0.7)
+collision_layer = 2
+collision_mask = 3
+
+[node name="collision" type="CollisionShape3D" parent="goofy robor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("BoxShape3D_85g3d")
+
+[node name="yr2025 - frc1155" parent="goofy robor5" instance=ExtResource("7_tipki")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="goofy robor6" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.416021, -0.78033, 0.466917, 0.625835, 0.126827, 0.769575, -0.65974, 0.612372, 0.435596, -5.5, 3.6, -2.5)
+collision_layer = 2
+collision_mask = 3
+
+[node name="collision" type="CollisionShape3D" parent="goofy robor6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("BoxShape3D_85g3d")
+
+[node name="yr2025 - frc1155" parent="goofy robor6" instance=ExtResource("7_tipki")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="goofy robor7" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.416021, -0.78033, 0.466917, 0.625835, 0.126827, 0.769575, -0.65974, 0.612372, 0.435596, -2, 0.8, -2.5)
+collision_layer = 2
+collision_mask = 3
+
+[node name="collision" type="CollisionShape3D" parent="goofy robor7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("BoxShape3D_85g3d")
+
+[node name="yr2025 - frc1155" parent="goofy robor7" instance=ExtResource("7_tipki")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="goofy robor8" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.416021, -0.78033, 0.466917, 0.625835, 0.126827, 0.769575, -0.65974, 0.612372, 0.435596, 0.5, 0.8, -2.5)
+collision_layer = 2
+collision_mask = 3
+
+[node name="collision" type="CollisionShape3D" parent="goofy robor8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("BoxShape3D_85g3d")
+
+[node name="yr2025 - frc1155" parent="goofy robor8" instance=ExtResource("7_tipki")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="goofy robor9" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.416021, -0.78033, 0.466917, 0.625835, 0.126827, 0.769575, -0.65974, 0.612372, 0.435596, -6.9, 0.8, -1.3)
+collision_layer = 2
+collision_mask = 3
+
+[node name="collision" type="CollisionShape3D" parent="goofy robor9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("BoxShape3D_85g3d")
+
+[node name="yr2025 - frc1155" parent="goofy robor9" instance=ExtResource("7_tipki")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

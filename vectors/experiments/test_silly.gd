@@ -14,7 +14,7 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var input_dir := Input.get_vector("drive_neg_x", "drive_pos_x", "drive_neg_y", "drive_pos_y")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		vx += direction.x * SPEED * delta
@@ -23,10 +23,7 @@ func _physics_process(delta: float) -> void:
 		vx += -direction.x * SPEED * delta
 		vz += -direction.z * SPEED * delta
 
-	if Input.is_key_pressed(KEY_A):
-		vo += -SPEED * 0.1
-	elif Input.is_key_pressed(KEY_D):
-		vo += SPEED * 0.1
+	vo += SPEED * Input.get_axis("turn_neg", "turn_pos")
 
 	vx = clamp(vx * FRICTION, -10, 10)
 	vz = clamp(vz * FRICTION, -10, 10)

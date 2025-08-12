@@ -18,6 +18,39 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
+[input]
+
+drive_pos_x={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":1.0,"script":null)
+]
+}
+drive_pos_y={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":1.0,"script":null)
+]
+}
+drive_neg_x={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":-1.0,"script":null)
+]
+}
+drive_neg_y={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":-1.0,"script":null)
+]
+}
+turn_pos={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":2,"axis_value":-1.0,"script":null)
+]
+}
+turn_neg={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":2,"axis_value":1.0,"script":null)
+]
+}
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

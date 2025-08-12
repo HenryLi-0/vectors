@@ -1,3 +1,60 @@
-[gd_scene format=3 uid="uid://rk5fcw6h6i8e"]
+[gd_scene load_steps=6 format=3 uid="uid://rk5fcw6h6i8e"]
+
+[ext_resource type="PackedScene" uid="uid://drp581c36yf14" path="res://assets/2025 reefscape field.glb" id="1_6pmjc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6pmjc"]
+size = Vector3(17.6, 0.5, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ttalb"]
+size = Vector3(0.1, 2, 5.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lptdg"]
+size = Vector3(0.1, 0.5, 14.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7156t"]
+size = Vector3(0.1, 1.9, 2.2)
 
 [node name="Field" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+mass = 1e+14
+gravity_scale = 0.0
+
+[node name="2025 reefscape field" parent="RigidBody3D" instance=ExtResource("1_6pmjc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 2.6077e-07)
+
+[node name="Field" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -5.96046e-08)
+shape = SubResource("BoxShape3D_6pmjc")
+
+[node name="Red Alliance DS" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8, 1.0024, 0)
+shape = SubResource("BoxShape3D_ttalb")
+
+[node name="Blue Alliance DS" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8, 1.0024, 0)
+shape = SubResource("BoxShape3D_ttalb")
+
+[node name="Side Glass Side 1" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.01166e-07, 0.252398, 4.1)
+shape = SubResource("BoxShape3D_lptdg")
+
+[node name="Side Glass Side 2" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.01166e-07, 0.252398, -4.1)
+shape = SubResource("BoxShape3D_lptdg")
+
+[node name="HPI Red Side 1" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(-0.587785, 0, -0.809017, 0, 1, 0, 0.809017, 0, -0.587785, -7.98123, 0.702397, 3.43885)
+shape = SubResource("BoxShape3D_7156t")
+
+[node name="HPI Red Side 2" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(-0.587785, 0, 0.809017, 0, 1, 0, -0.809017, 0, -0.587785, -7.98123, 0.702397, -3.36115)
+shape = SubResource("BoxShape3D_7156t")
+
+[node name="HPI Blue Side 1" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(-0.587785, 0, 0.809017, 0, 1, 0, -0.809017, 0, -0.587785, 7.91877, 0.702397, 3.43885)
+shape = SubResource("BoxShape3D_7156t")
+
+[node name="HPI Blue Side 2" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(-0.587785, 0, -0.809017, 0, 1, 0, 0.809017, 0, -0.587785, 8.01877, 0.702397, -3.36115)
+shape = SubResource("BoxShape3D_7156t")
