@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c746gv0tu0rs0"]
+[gd_scene load_steps=12 format=3 uid="uid://c746gv0tu0rs0"]
 
 [ext_resource type="Script" uid="uid://b2x74n4x3cx2g" path="res://scripts/testsilly.gd" id="1_pcu7d"]
 [ext_resource type="ArrayMesh" uid="uid://dv0xuogjn6ott" path="res://assets/robots/yr2025 - frc1778/drivetrain.obj" id="2_pcu7d"]
+[ext_resource type="Script" uid="uid://0b5cdd5cgopo" path="res://scripts/testcollision.gd" id="3_l6grw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nhxv8"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -23,6 +24,11 @@ size = Vector3(0.77652, 0.152466, 0.722816)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pcu7d"]
 albedo_color = Color(0.0987284, 0.0987284, 0.0987284, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3dx25"]
+size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nuoa6"]
 
 [node name="Testing" type="Node3D"]
 
@@ -46,29 +52,46 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.4824
 mesh = ExtResource("2_pcu7d")
 skeleton = NodePath("../..")
 
-[node name="Camera3D" type="Camera3D" parent="robot"]
-transform = Transform3D(1, 0, 0, 0, 0.792514, 0.609854, 0, -0.609854, 0.792513, 0, 3.82409, 3.81281)
+[node name="map" type="Node" parent="."]
 
-[node name="the ground" type="CSGMesh3D" parent="."]
+[node name="the ground" type="CSGMesh3D" parent="map"]
 transform = Transform3D(4.263, 0, 0, 0, 0.1, 0, 0, 0, 5.51, 0, -0.00879443, -0.59788)
 use_collision = true
 mesh = SubResource("BoxMesh_pcu7d")
 material = SubResource("StandardMaterial3D_pcu7d")
 
-[node name="the wall" type="CSGMesh3D" parent="."]
+[node name="the wall" type="CSGMesh3D" parent="map"]
 transform = Transform3D(0.147661, 0, 0, 0, -0.786319, 0, 0, 0, 5.51, -2.0812, 0.0333915, -0.59788)
 use_collision = true
 mesh = SubResource("BoxMesh_pcu7d")
 material = SubResource("StandardMaterial3D_pcu7d")
 
-[node name="the wall2" type="CSGMesh3D" parent="."]
+[node name="the wall2" type="CSGMesh3D" parent="map"]
 transform = Transform3D(-6.45449e-09, 0, -5.51, 0, -0.786319, 0, 0.147661, 0, -2.4085e-07, -0.510102, 0.0333915, -3.4249)
 use_collision = true
 mesh = SubResource("BoxMesh_pcu7d")
 material = SubResource("StandardMaterial3D_pcu7d")
 
-[node name="the wall3" type="CSGMesh3D" parent="."]
+[node name="the wall3" type="CSGMesh3D" parent="map"]
 transform = Transform3D(-0.147661, 0, 4.817e-07, 0, -0.786319, 0, -1.2909e-08, 0, -5.51, 1.99813, 0.0333915, -0.651227)
 use_collision = true
 mesh = SubResource("BoxMesh_pcu7d")
 material = SubResource("StandardMaterial3D_pcu7d")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.725892, 0.687809, 0, -0.687809, 0.725892, -0.117143, 3.82409, 5.00846)
+
+[node name="spinner" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.5, 0, 0)
+collision_mask = 2
+gravity_scale = 0.0
+script = ExtResource("3_l6grw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spinner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 0.1, -2.18557e-08)
+shape = SubResource("BoxShape3D_3dx25")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="spinner"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, -0.1, 0.1, -2.18557e-08)
+mesh = SubResource("BoxMesh_nuoa6")
+skeleton = NodePath("../CollisionShape3D")
