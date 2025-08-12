@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://c746gv0tu0rs0"]
 
-[ext_resource type="Script" uid="uid://b2x74n4x3cx2g" path="res://scripts/testsilly.gd" id="1_pcu7d"]
+[ext_resource type="Script" uid="uid://b2x74n4x3cx2g" path="res://experiments/test_silly.gd" id="1_pcu7d"]
 [ext_resource type="ArrayMesh" uid="uid://dv0xuogjn6ott" path="res://assets/robots/yr2025 - frc1778/drivetrain.obj" id="2_pcu7d"]
-[ext_resource type="Script" uid="uid://0b5cdd5cgopo" path="res://scripts/testcollision.gd" id="3_l6grw"]
+[ext_resource type="Script" uid="uid://0b5cdd5cgopo" path="res://experiments/test_collision.gd" id="3_l6grw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nhxv8"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)

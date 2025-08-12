@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://beaatof74kyaj"]
+
+[node name="RobotIo" type="Node3D"]

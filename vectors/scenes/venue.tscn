@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://br8wsvxgw8856"]
+
+[node name="Venue" type="Node3D"]
+
+[node name="FieldSpectation" type="Node3D" parent="."]
+
+[node name="PitArea" type="Node3D" parent="."]
