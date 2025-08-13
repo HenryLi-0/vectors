@@ -12,18 +12,11 @@ var lastz:float = 0.0
 
 func _physics_process(delta: float) -> void:
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("drive_neg_x", "drive_pos_x", "drive_neg_y", "drive_pos_y")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		vx += direction.x * SPEED * delta
-		vz += direction.z * SPEED * delta
-	else:
-		vx += -direction.x * SPEED * delta
-		vz += -direction.z * SPEED * delta
+	vx += input_dir.y * SPEED * delta
+	vz += input_dir.x * SPEED * delta
 
-	vo += SPEED * Input.get_axis("turn_neg", "turn_pos")
+	vo += SPEED * Input.get_axis("turn_neg", "turn_pos") * 0.02
 
 	vx = clamp(vx * FRICTION, -10, 10)
 	vz = clamp(vz * FRICTION, -10, 10)
