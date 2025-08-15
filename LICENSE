@@ -4,11 +4,19 @@ Copyright (c) 2025 Henry Li
 Additional Attribution Requirements:
 In addition to the terms of the GNU General Public License v3.0 included below, any distributed or publicly hosted version of this project (modified or unmodified) MUST:
 
-1. Include the following credit in the software's "About" screen, splash screen, or credits section, in a font size and placement reasonably visible and readable to the end user:
+1. Display Attribution
 
-    Powered by Vectors (@HenryLi-0)
+    Include the following credit in the software's "About" screen, splash screen, or credits section, in a font size and placement reasonably visible and readable to the end user:
 
-2. Preserve this attribution AND link back to the official repository (https://github.com/HenryLi-0/vectors) in the README and/or equivalent documentation of the project included with the distribution.
+        Powered by Vectors (@HenryLi-0)
+
+2. Link To Source
+
+    Preserve this attribution AND link back to the official repository (https://github.com/HenryLi-0/vectors) in the README and/or equivalent documentation of the project included with the distribution.
+
+3. Asset Attribution
+
+    Any robots models included in the assets folder of the official repository MUST be distributed with the appropriate attribution AND a link the corresponding OnShape document.
 
 Failure to include proper attribution constitutes a violation of this license's terms.
 
