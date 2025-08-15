@@ -53,9 +53,6 @@ shadow_enabled = true
 [node name="1778Robot" parent="." instance=ExtResource("3_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 0, 1.8)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.6, 1.5, 1.49012e-08)
-
 [node name="Venue" parent="." instance=ExtResource("4_o6xl0")]
 
 [node name="Audio" parent="." instance=ExtResource("5_tipki")]
@@ -72,3 +69,6 @@ shape = SubResource("BoxShape3D_85g3d")
 
 [node name="yr2025 - frc1155" parent="goofy robor" instance=ExtResource("7_tipki")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="goofy robor"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.6, 1.4, 1.49012e-08)
