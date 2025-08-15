@@ -1,3 +1,136 @@
-[gd_scene format=3 uid="uid://okd0sabswmfq"]
+[gd_scene load_steps=19 format=3 uid="uid://okd0sabswmfq"]
+
+[ext_resource type="PackedScene" uid="uid://c4fr8kdjrw26t" path="res://assets/robots/yr2025 - frc1778/drivetrain.glb" id="1_1f2gu"]
+[ext_resource type="Script" uid="uid://crndgj0e627hj" path="res://scenes/robots/1778/commands.gd" id="1_t12an"]
+[ext_resource type="PackedScene" uid="uid://05uxgaro04ot" path="res://assets/robots/yr2025 - frc1778/ground-intake.glb" id="2_ftya3"]
+[ext_resource type="PackedScene" uid="uid://bsbkbbhq4wg2r" path="res://assets/robots/yr2025 - frc1778/ground-intake-top-rollers.glb" id="3_ijgdu"]
+[ext_resource type="PackedScene" uid="uid://dh8ifm53njsx6" path="res://assets/robots/yr2025 - frc1778/elevator-stage-1.glb" id="3_sd3rr"]
+[ext_resource type="PackedScene" uid="uid://d0pvhewegyyfb" path="res://assets/robots/yr2025 - frc1778/ground-intake-bottom-rollers.glb" id="4_cqhly"]
+[ext_resource type="PackedScene" uid="uid://68o4kr2s6im1" path="res://assets/robots/yr2025 - frc1778/elevator-stage-2.glb" id="4_wjhki"]
+[ext_resource type="PackedScene" uid="uid://b1fb0hldhlqw0" path="res://assets/robots/yr2025 - frc1778/arm.glb" id="5_ijgdu"]
+[ext_resource type="PackedScene" uid="uid://c2iokgt8xum43" path="res://assets/robots/yr2025 - frc1778/ground-intake-far-left-roller.glb" id="5_tb3rq"]
+[ext_resource type="PackedScene" uid="uid://doiiykfvw85nl" path="res://assets/robots/yr2025 - frc1778/ground-intake-middle-left-roller.glb" id="6_t12an"]
+[ext_resource type="PackedScene" uid="uid://okllpxh8edga" path="res://assets/robots/yr2025 - frc1778/ground-intake-middle-right-roller.glb" id="7_fu0ky"]
+[ext_resource type="PackedScene" uid="uid://bnincmrib3agj" path="res://assets/robots/yr2025 - frc1778/end-effector-back-rollers.glb" id="8_hoppt"]
+[ext_resource type="PackedScene" uid="uid://dxcfy0k7170o1" path="res://assets/robots/yr2025 - frc1778/ground-intake-far-right-roller.glb" id="8_sdr17"]
+[ext_resource type="PackedScene" uid="uid://baaifhsj6t6ob" path="res://assets/robots/yr2025 - frc1778/end-effector-front-rollers.glb" id="9_2naya"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3664u"]
+size = Vector3(0.9, 0.9, 0.1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tb3rq"]
+height = 0.641
+radius = 0.025
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tb3rq"]
+size = Vector3(0.229, 0.254, 0.06)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_t12an"]
+height = 0.125
+radius = 0.038
 
 [node name="1778Robot" type="Node3D"]
+
+[node name="Constants" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Commands" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_t12an")
+
+[node name="Drivetrain" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Drivetrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98023e-08, 2.91565e-08, 0.1)
+shape = SubResource("BoxShape3D_3664u")
+
+[node name="drivetrain" parent="Drivetrain" instance=ExtResource("1_1f2gu")]
+
+[node name="GroundIntake" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0.171, 0.33)
+
+[node name="ground-intake" parent="GroundIntake" instance=ExtResource("2_ftya3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="TopRollers" type="RigidBody3D" parent="GroundIntake"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02, 0.193, 0.234)
+
+[node name="ground-intake-top-rollers" parent="GroundIntake/TopRollers" instance=ExtResource("3_ijgdu")]
+
+[node name="collision" type="CollisionShape3D" parent="GroundIntake/TopRollers"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.355, 0, 0)
+shape = SubResource("CylinderShape3D_tb3rq")
+
+[node name="BottomRollers" type="RigidBody3D" parent="GroundIntake"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02, 0.043, 0.234)
+
+[node name="ground-intake-bottom-rollers" parent="GroundIntake/BottomRollers" instance=ExtResource("4_cqhly")]
+
+[node name="collision" type="CollisionShape3D" parent="GroundIntake/BottomRollers"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.355, 0, 0)
+shape = SubResource("CylinderShape3D_tb3rq")
+
+[node name="FarLeftRoller" type="RigidBody3D" parent="GroundIntake"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.688, 0.14, 0.118)
+
+[node name="ground-intake-far-left-roller" parent="GroundIntake/FarLeftRoller" instance=ExtResource("5_tb3rq")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="MiddleLeftRoller" type="RigidBody3D" parent="GroundIntake"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.538, 0.14, 0.118)
+
+[node name="ground-intake-middle-left-roller" parent="GroundIntake/MiddleLeftRoller" instance=ExtResource("6_t12an")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="MiddleRightRoller" type="RigidBody3D" parent="GroundIntake"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.211, 0.14, 0.118)
+
+[node name="ground-intake-middle-right-roller" parent="GroundIntake/MiddleRightRoller" instance=ExtResource("7_fu0ky")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="FarRightRoller" type="RigidBody3D" parent="GroundIntake"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.061, 0.14, 0.118)
+
+[node name="ground-intake-far-right-roller" parent="GroundIntake/FarRightRoller" instance=ExtResource("8_sdr17")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="ElevatorStageOne" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, -0.025)
+
+[node name="elevator-stage-1" parent="ElevatorStageOne" instance=ExtResource("3_sd3rr")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="ElevatorStageTwo" type="RigidBody3D" parent="ElevatorStageOne"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
+
+[node name="elevator-stage-2" parent="ElevatorStageOne/ElevatorStageTwo" instance=ExtResource("4_wjhki")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="collision" type="CollisionShape3D" parent="ElevatorStageOne/ElevatorStageTwo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.127, 0)
+shape = SubResource("BoxShape3D_tb3rq")
+
+[node name="Arm" type="RigidBody3D" parent="ElevatorStageOne/ElevatorStageTwo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.127, 0.03)
+
+[node name="arm" parent="ElevatorStageOne/ElevatorStageTwo/Arm" instance=ExtResource("5_ijgdu")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="EndBackRollers" type="RigidBody3D" parent="ElevatorStageOne/ElevatorStageTwo/Arm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.063, 0.539, 0.139)
+
+[node name="end-effector-back-rollers" parent="ElevatorStageOne/ElevatorStageTwo/Arm/EndBackRollers" instance=ExtResource("8_hoppt")]
+
+[node name="collision" type="CollisionShape3D" parent="ElevatorStageOne/ElevatorStageTwo/Arm/EndBackRollers"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.063, 0, 0)
+shape = SubResource("CylinderShape3D_t12an")
+
+[node name="EndFrontRoller" type="RigidBody3D" parent="ElevatorStageOne/ElevatorStageTwo/Arm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.063, 0.539, 0.321)
+
+[node name="end-effector-front-rollers" parent="ElevatorStageOne/ElevatorStageTwo/Arm/EndFrontRoller" instance=ExtResource("9_2naya")]
+
+[node name="collision" type="CollisionShape3D" parent="ElevatorStageOne/ElevatorStageTwo/Arm/EndFrontRoller"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.063, 0, 0)
+shape = SubResource("CylinderShape3D_t12an")
