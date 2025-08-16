@@ -7,11 +7,11 @@ const GOAL:int = 1
 
 func _physics_process(delta: float) -> void:
 	#print(arm.rotation_degrees.z)
-	print(end_front_rollers.angular_velocity.x)
+	#arm.rotation.z = -PI/6
 	if Input.is_action_pressed("test"):
-		arm.constant_torque = Vector3(0,0,(-PI/6 - arm.rotation.z) * delta * 0.2)
-		end_front_rollers.add_constant_torque(Vector3(-1 * delta,0,0))
-		end_back_rollers.add_constant_torque(Vector3( 1 * delta,0,0))
+		arm.constant_torque = Vector3(0,0,(-PI/6 - arm.rotation.z) * delta * 0.1)
+		end_front_rollers.apply_torque(end_front_rollers.global_transform.basis * Vector3.RIGHT * -delta)
+		end_back_rollers.apply_torque(end_front_rollers.global_transform.basis * Vector3.RIGHT * delta)
 	else:
 		arm.constant_torque = Vector3.ZERO
 		end_front_rollers.constant_torque = Vector3.ZERO
