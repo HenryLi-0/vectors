@@ -1,8 +1,8 @@
 extends Node
 
-@onready var end_back_rollers: RigidBody3D = $"../ElevatorStageOne/ElevatorStageTwo/Arm/EndBackRollers"
-@onready var end_front_rollers: RigidBody3D = $"../ElevatorStageOne/ElevatorStageTwo/Arm/EndFrontRollers"
-@onready var arm: RigidBody3D = $"../ElevatorStageOne/ElevatorStageTwo/Arm"
+@onready var end_back_rollers: RigidBody3D = $"../Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndBackRollers"
+@onready var end_front_rollers: RigidBody3D = $"../Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndFrontRollers"
+@onready var arm: RigidBody3D = $"../Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm"
 const GOAL:int = 1
 
 func _physics_process(delta: float) -> void:
