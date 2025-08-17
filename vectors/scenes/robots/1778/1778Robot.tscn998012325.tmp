@@ -55,7 +55,6 @@ script = ExtResource("1_t12an")
 
 [node name="Drivetrain" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-mass = 10.0
 center_of_mass_mode = 1
 script = ExtResource("2_fu0ky")
 
@@ -129,7 +128,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.127, 0.03)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
-mass = 2.733
+mass = 0.001
 center_of_mass_mode = 1
 
 [node name="EndBackRollers" type="RigidBody3D" parent="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm"]
@@ -137,7 +136,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.063, 0.539, 0.139)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
-mass = 0.156
+mass = 0.001
 center_of_mass_mode = 1
 
 [node name="end-effector-back-rollers" parent="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndBackRollers" instance=ExtResource("8_hoppt")]
@@ -151,7 +150,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.063, 0.539, 0.321)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
-mass = 0.156
+mass = 0.001
 center_of_mass_mode = 1
 
 [node name="end-effector-front-rollers" parent="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndFrontRollers" instance=ExtResource("9_2naya")]
