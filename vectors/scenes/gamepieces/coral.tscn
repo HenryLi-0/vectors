@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfsyoe4u7liwp"]
+
+[ext_resource type="PackedScene" uid="uid://dfhatnt6n4kwp" path="res://assets/gamepieces/coral.glb" id="1_kr7wt"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sctos"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e3ck1"]
+height = 0.302
+radius = 0.057
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_w6ha5"]
+height = 0.302
+radius = 0.051
+
+[node name="Coral" type="RigidBody3D"]
+mass = 0.544
+physics_material_override = SubResource("PhysicsMaterial_sctos")
+
+[node name="OuterCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.151, 0)
+shape = SubResource("CylinderShape3D_e3ck1")
+
+[node name="InnerCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.151, 0)
+shape = SubResource("CylinderShape3D_w6ha5")
+
+[node name="coral" parent="." instance=ExtResource("1_kr7wt")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://okd0sabswmfq"]
+[gd_scene load_steps=27 format=3 uid="uid://okd0sabswmfq"]
 
 [ext_resource type="PackedScene" uid="uid://c4fr8kdjrw26t" path="res://assets/robots/yr2025 - frc1778/drivetrain.glb" id="1_1f2gu"]
 [ext_resource type="Script" uid="uid://cobmb6ekmcrs1" path="res://scenes/robots/1778/constants.gd" id="1_sdr17"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://bnincmrib3agj" path="res://assets/robots/yr2025 - frc1778/end-effector-back-rollers.glb" id="8_hoppt"]
 [ext_resource type="PackedScene" uid="uid://dxcfy0k7170o1" path="res://assets/robots/yr2025 - frc1778/ground-intake-far-right-roller.glb" id="8_sdr17"]
 [ext_resource type="PackedScene" uid="uid://baaifhsj6t6ob" path="res://assets/robots/yr2025 - frc1778/end-effector-front-rollers.glb" id="9_2naya"]
+[ext_resource type="Script" uid="uid://s4u55bmads68" path="res://scenes/robots/1778/s_end_rollers.gd" id="11_kywwa"]
+[ext_resource type="Script" uid="uid://clf3usst02y41" path="res://scenes/robots/1778/s_arm.gd" id="11_w565x"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tb3rq"]
 height = 0.641
@@ -131,6 +133,7 @@ axis_lock_linear_y = true
 axis_lock_linear_z = true
 mass = 2.733
 center_of_mass_mode = 1
+script = ExtResource("11_w565x")
 
 [node name="EndBackRollers" type="RigidBody3D" parent="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.063, 0.539, 0.139)
@@ -139,6 +142,7 @@ axis_lock_linear_y = true
 axis_lock_linear_z = true
 mass = 0.156
 center_of_mass_mode = 1
+script = ExtResource("11_kywwa")
 
 [node name="end-effector-back-rollers" parent="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndBackRollers" instance=ExtResource("8_hoppt")]
 
@@ -153,6 +157,8 @@ axis_lock_linear_y = true
 axis_lock_linear_z = true
 mass = 0.156
 center_of_mass_mode = 1
+script = ExtResource("11_kywwa")
+inverted = true
 
 [node name="end-effector-front-rollers" parent="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndFrontRollers" instance=ExtResource("9_2naya")]
 
@@ -202,6 +208,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98023e-08, 2.91565e-08, 0.1
 shape = SubResource("BoxShape3D_3664u")
 
 [node name="drivetrain" parent="Drivetrain" instance=ExtResource("1_1f2gu")]
-
-[node name="Camera3D" type="Camera3D" parent="Drivetrain"]
-transform = Transform3D(1, 0, 0, 0, 0.5, -0.866025, 0, 0.866025, 0.5, 0, -1.35, 1.15)
