@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://okd0sabswmfq"]
+[gd_scene load_steps=32 format=3 uid="uid://okd0sabswmfq"]
 
 [ext_resource type="PackedScene" uid="uid://c4fr8kdjrw26t" path="res://assets/robots/yr2025 - frc1778/drivetrain.glb" id="1_1f2gu"]
 [ext_resource type="Script" uid="uid://cobmb6ekmcrs1" path="res://scenes/robots/1778/constants.gd" id="1_sdr17"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://baaifhsj6t6ob" path="res://assets/robots/yr2025 - frc1778/end-effector-front-rollers.glb" id="9_2naya"]
 [ext_resource type="Script" uid="uid://s4u55bmads68" path="res://scenes/robots/1778/s_rollers.gd" id="11_kywwa"]
 [ext_resource type="Script" uid="uid://clf3usst02y41" path="res://scenes/robots/1778/s_arm.gd" id="11_w565x"]
+[ext_resource type="PackedScene" uid="uid://cfsyoe4u7liwp" path="res://scenes/gamepieces/coral.tscn" id="20_egqgn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wfe60"]
 size = Vector3(0.641, 0.05, 0.05)
@@ -103,7 +104,6 @@ axis_lock_linear_y = true
 axis_lock_linear_z = true
 mass = 0.484
 script = ExtResource("11_kywwa")
-inverted = true
 lockRotateX = false
 
 [node name="ground-intake-bottom-rollers" parent="Drivetrain/GroundIntake/BottomRollers" instance=ExtResource("4_cqhly")]
@@ -228,6 +228,7 @@ axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
 mass = 0.156
+center_of_mass_mode = 1
 script = ExtResource("11_kywwa")
 lockRotateX = false
 
@@ -243,6 +244,7 @@ axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
 mass = 0.156
+center_of_mass_mode = 1
 script = ExtResource("11_kywwa")
 inverted = true
 lockRotateX = false
@@ -296,5 +298,5 @@ shape = SubResource("BoxShape3D_3664u")
 
 [node name="drivetrain" parent="Drivetrain" instance=ExtResource("1_1f2gu")]
 
-[node name="Camera3D" type="Camera3D" parent="Drivetrain"]
-transform = Transform3D(-4.2222e-08, -0.598884, 0.800836, 1, -5.12316e-08, 1.44102e-08, 3.23981e-08, 0.800836, 0.598884, 0.65, -0.654664, 0.560943)
+[node name="Coral" parent="." instance=ExtResource("20_egqgn")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.1, 0.45, 0.2)

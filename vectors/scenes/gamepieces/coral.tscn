@@ -4,9 +4,8 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sctos"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_e3ck1"]
-height = 0.302
-radius = 0.057
+[sub_resource type="BoxShape3D" id="BoxShape3D_sctos"]
+size = Vector3(0.114, 0.302, 0.114)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_w6ha5"]
 height = 0.302
@@ -18,7 +17,7 @@ physics_material_override = SubResource("PhysicsMaterial_sctos")
 
 [node name="OuterCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.151, 0)
-shape = SubResource("CylinderShape3D_e3ck1")
+shape = SubResource("BoxShape3D_sctos")
 
 [node name="InnerCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.151, 0)

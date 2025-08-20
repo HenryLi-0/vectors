@@ -32,13 +32,23 @@ func do_physics(inDelta:float) -> void:
 	if lockPlaceX: position.x = initPosX
 	if lockPlaceY: position.y = initPosY
 	if lockPlaceZ: position.z = initPosZ
-	#if lockRotateX: rotation.x = 0
-	#if lockRotateY: rotation.y = 0
-	#if lockRotateZ: rotation.z = 0
 	if not(lockRotateX):
-		apply_torque(global_transform.basis * Vector3.RIGHT * ((-1 if inverted else 1) * power * delta))
+		apply_torque(global_transform.basis.x * ((-1 if inverted else 1) * power))
 	elif not(lockRotateY):
-		apply_torque(global_transform.basis * Vector3.UP * ((-1 if inverted else 1) * power * delta))
+		apply_torque(global_transform.basis.y * ((-1 if inverted else 1) * power))
 	elif not(lockRotateZ):
-		apply_torque(global_transform.basis * Vector3.BACK * ((-1 if inverted else 1) * power * delta))
+		apply_torque(global_transform.basis.z * ((-1 if inverted else 1) * power))
 	else: pass
+
+func lock() -> void:
+	var currentRotation = rotation
+	if lockRotateX: currentRotation.x = 0
+	if lockRotateY: currentRotation.y = 0
+	if lockRotateZ: currentRotation.z = 0
+	rotation = currentRotation
+	#if not(lockRotateX): 
+		#angular_velocity.x = ((-1 if inverted else 1) * power * delta)
+	#if not(lockRotateY): 
+		#angular_velocity.y = ((-1 if inverted else 1) * power * delta)
+	#if not(lockRotateZ): 
+		#angular_velocity.z = ((-1 if inverted else 1) * power * delta)
