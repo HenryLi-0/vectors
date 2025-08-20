@@ -19,6 +19,7 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+
 	g_far_left_roller.do_physics(delta)
 	g_middle_left_roller.do_physics(delta)
 	g_middle_right_roller.do_physics(delta)
@@ -28,19 +29,25 @@ func _physics_process(delta: float) -> void:
 	g_intake.do_physics(delta)
 	
 	e_front_rollers.do_physics(delta)
-	e_back_rollers.do_physics(delta)
+	#e_back_rollers.do_physics(delta)
 	e_arm.do_physics(delta)
 	
 	drivetrain.do_physics(delta)
-	
+
 	if Input.is_action_pressed("test"):
-		g_intake.setGoal(PI)
-		g_top_rollers.setPower(-5000)
-		g_bottom_rollers.setPower(-5000)
+		#g_intake.setGoal(PI/2)
+		#g_top_rollers.setPower(-1)
+		#g_bottom_rollers.setPower(-1)
+		#e_front_rollers.setPower(-1)
 		e_arm.setGoal(0)
 	else:
-		g_intake.setGoal(0)
-		g_top_rollers.setPower(0)
-		g_bottom_rollers.setPower(0)
+		#g_intake.setGoal(-PI/2)
+		#g_top_rollers.setPower(1)
+		#g_bottom_rollers.setPower(1)
+		#e_front_rollers.setPower(1)
 		e_arm.setGoal(PI/4)
-		
+	e_back_rollers.rotation.y = 0
+	e_back_rollers.rotation.z = 0
+	e_back_rollers.apply_torque(e_back_rollers.global_transform.basis * Vector3.RIGHT * delta)
+
+	print(e_back_rollers.rotation.x)
