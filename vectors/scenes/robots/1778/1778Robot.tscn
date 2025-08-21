@@ -75,7 +75,6 @@ axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
 mass = 7.0
-center_of_mass_mode = 1
 script = ExtResource("4_gjlni")
 
 [node name="TopRollers" type="RigidBody3D" parent="Drivetrain/GroundIntake"]

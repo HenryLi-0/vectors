@@ -42,10 +42,9 @@ func setGoal(newGoal:float = 0) -> void:
 func do_physics(inDelta: float) -> void:
 	delta = inDelta
 	var fb = pidController.calculate(rotation.z, goal, delta)
-	#print("goal is " + str(goal))
-	#print("power is " + str(fb))
-	#print("position is " + str(rotation.z))
+	print("goal is " + str(goal))
+	print("power is " + str(fb))
+	print("position is " + str(rotation.z))
 	
-	apply_torque(global_transform.basis * Vector3.BACK * fb * delta)
-	rotation.x = 0
-	rotation.y = 0
+	transform = transform.orthonormalized()
+	apply_torque(global_transform.basis.z * fb * delta)
