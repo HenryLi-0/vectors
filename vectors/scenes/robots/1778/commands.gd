@@ -19,13 +19,12 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	g_top_rollers.setPower(-1000)
-	g_bottom_rollers.setPower(-1000)
+	g_top_rollers.setPower(-10)
+	g_bottom_rollers.setPower(-10)
 	if Input.is_action_pressed("test"):
 		g_intake.setGoal(PI/2)
 		#e_back_rollers.setPower(-1)
 		#e_arm.setGoal(0)
-		
 	else:
 		g_intake.setGoal(-PI/4)
 		#e_arm.setGoal(PI/4)
@@ -42,15 +41,4 @@ func _physics_process(delta: float) -> void:
 	e_back_rollers.do_physics(delta)
 	e_arm.do_physics(delta)
 	
-	drivetrain.do_physics(delta)
-	
-	if randi_range(0, 10) == 0:
-		g_far_left_roller.lock()
-		g_middle_left_roller.lock()
-		g_middle_right_roller.lock()
-		g_far_right_roller.lock()
-		g_top_rollers.lock()
-		g_bottom_rollers.lock()
-		e_front_rollers.lock()
-		e_back_rollers.lock()
-	
+	drivetrain.do_physics(delta)	
