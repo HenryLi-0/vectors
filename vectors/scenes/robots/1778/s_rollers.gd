@@ -28,9 +28,15 @@ func do_physics(inDelta:float) -> void:
 	delta = inDelta
 
 	transform = transform.orthonormalized()
-	if rotateX: apply_torque(global_transform.basis.x * ((-1 if inverted else 1) * power))
-	elif rotateY: apply_torque(global_transform.basis.y * ((-1 if inverted else 1) * power))
-	elif rotateZ: apply_torque(global_transform.basis.z * ((-1 if inverted else 1) * power))
+	if rotateX: 
+		apply_torque(global_transform.basis.x * ((-1 if inverted else 1) * power))
+		#rotate_object_local(Vector3.RIGHT, (-1 if inverted else 1) * power * delta)
+	elif rotateY: 
+		apply_torque(global_transform.basis.y * ((-1 if inverted else 1) * power))
+		#rotate_object_local(Vector3.UP, (-1 if inverted else 1) * power * delta)
+	elif rotateZ: 
+		apply_torque(global_transform.basis.z * ((-1 if inverted else 1) * power))
+		#rotate_object_local(Vector3.BACK, (-1 if inverted else 1) * power * delta)
 	else: pass
 	
 	angular_velocity *= 0.7
