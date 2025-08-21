@@ -75,6 +75,7 @@ axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
 mass = 7.0
+center_of_mass_mode = 1
 script = ExtResource("4_gjlni")
 
 [node name="TopRollers" type="RigidBody3D" parent="Drivetrain/GroundIntake"]
@@ -92,13 +93,13 @@ rotateX = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.355, 0, 0)
 shape = SubResource("BoxShape3D_wfe60")
 
-[node name="coral" parent="Drivetrain/GroundIntake/TopRollers/collision" instance=ExtResource("7_wfe60")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.305, 0, 0)
-
 [node name="constrain" type="PinJoint3D" parent="Drivetrain/GroundIntake/TopRollers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.709, 0, 0)
 node_a = NodePath("../..")
 node_b = NodePath("..")
+
+[node name="coral" parent="Drivetrain/GroundIntake/TopRollers" instance=ExtResource("7_wfe60")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="BottomRollers" type="RigidBody3D" parent="Drivetrain/GroundIntake"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.02, -0.234, 0.043)
@@ -115,9 +116,6 @@ rotateX = true
 [node name="collision" type="CollisionShape3D" parent="Drivetrain/GroundIntake/BottomRollers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.355, 0, 0)
 shape = SubResource("BoxShape3D_wfe60")
-
-[node name="coral" parent="Drivetrain/GroundIntake/BottomRollers/collision" instance=ExtResource("7_wfe60")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.3, 0, 0)
 
 [node name="constrain" type="PinJoint3D" parent="Drivetrain/GroundIntake/BottomRollers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.709, 0, 0)
@@ -330,7 +328,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134, 0.482, 0)
 shape = SubResource("BoxShape3D_fu0ky")
 
 [node name="collision" type="CollisionShape3D" parent="Drivetrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98023e-08, 2.91565e-08, 0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
 shape = SubResource("BoxShape3D_3664u")
 
 [node name="drivetrain" parent="Drivetrain" instance=ExtResource("1_1f2gu")]

@@ -1,8 +1,8 @@
 extends RigidBody3D
 
-@export var kP:float = 2.5
+@export var kP:float = 1.7
 @export var kI:float = 0
-@export var kD:float = 1.2
+@export var kD:float = 0.12
 
 class PIDController:
 	var p: float
@@ -47,6 +47,7 @@ func do_physics(inDelta:float) -> void:
 	#print("position is " + str(rotation.x))
 	
 	transform = transform.orthonormalized()
-	apply_torque(global_transform.basis.x * fb * delta)
-	#rotation.y = 0
-	#rotation.z = 0
+	rotate_object_local(Vector3(1,0,0), fb * delta)
+	#apply_torque(global_transform.basis.x * fb * delta)
+	rotation.y = 0
+	rotation.z = 0

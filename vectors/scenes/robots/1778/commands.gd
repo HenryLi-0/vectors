@@ -19,15 +19,17 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	#g_top_rollers.setPower(-10)
-	#g_bottom_rollers.setPower(-10)
+	#print(g_top_rollers.rotation.x)
+	g_top_rollers.setPower(-100)
+	g_bottom_rollers.setPower(-100)
+	#g_far_left_roller.setPower(10)
 	if Input.is_action_pressed("test"):
-		g_intake.setGoal(PI/2)
+		#g_intake.setGoal(PI - 2.325886)
 		#e_back_rollers.setPower(-1)
-		#e_arm.setGoal(0)
+		e_arm.setGoal(0)
 	else:
-		g_intake.setGoal(-PI/4)
-		#e_arm.setGoal(PI/4)
+		#g_intake.setGoal(-PI/2)
+		e_arm.setGoal(PI/4)
 
 	g_far_left_roller.do_physics(delta)
 	g_middle_left_roller.do_physics(delta)
