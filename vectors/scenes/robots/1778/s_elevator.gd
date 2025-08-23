@@ -1,8 +1,12 @@
 extends RigidBody3D
 
-@export var kP:float = 3
-@export var kI:float = 0
-@export var kD:float = 0.8
+@export var kStageOneP:float = 6000
+@export var kStageOneI:float = 0
+@export var kStageOneD:float = 600
+
+@export var kStageTwoP:float = 6000
+@export var kStageTwoI:float = 0
+@export var kStageTwoD:float = 400
 
 var CONSTANTS = preload("res://scenes/robots/1778/constants.gd")
 @onready var stageOne: RigidBody3D = $"."
@@ -33,7 +37,8 @@ class PIDController:
 		self.lastError = goal-measurement
 		return value
 
-var pidController:PIDController = PIDController.new(kP, kI, kD)
+var pidControllerStageOne:PIDController = PIDController.new(kStageOneP, kStageOneI, kStageOneD)
+var pidControllerStageTwo:PIDController = PIDController.new(kStageTwoP, kStageTwoI, kStageTwoD)
 
 var goal:float = CONSTANTS.ELEVATOR_MIN_EXTENSION
 var delta:float = 0
@@ -49,11 +54,17 @@ func setGoalPosition(pos:float) -> void:
 '''Process physics.'''
 func do_physics(inDelta:float) -> void:
 	delta = inDelta
-	var fb = pidController.calculate(stageTwo.global_position.y, goal, delta)
-	print("goal is " + str(goal))
-	print("power is " + str(fb))
-	print("position is " + str(stageTwo.global_position.y))
+	var fb = pidControllerStageOne.calculate(stageOne.global_position.y - CONSTANTS.ELEVATOR_MIN_EXTENSION, goal, delta)
+	#print("goal is " + str(goal))
+	#print("power is " + str(fb))
+	#print("position is " + str(stageOne.global_position.y - CONSTANTS.ELEVATOR_MIN_EXTENSION))
 	
-	transform = transform.orthonormalized()
+	stageOne.transform = stageOne.transform.orthonormalized()
 	stageOne.apply_central_force(Vector3(0, fb * delta, 0))
+	
+	fb = pidControllerStageTwo.calculate(stageTwo.global_position.y - stageOne.global_position.y, goal, delta)
+	#print("goal is " + str(goal))
+	#print("power is " + str(fb))
+	#print("position is " + str(stageTwo.global_position.y - stageOne.global_position.y))
+	stageTwo.transform = stageTwo.transform.orthonormalized()
 	stageTwo.apply_central_force(Vector3(0, fb * delta, 0))

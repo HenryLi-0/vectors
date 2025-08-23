@@ -9,5 +9,5 @@ static var DRIVE_FORCE: float = 120000 # ???
 static var TURN_FORCE: float = 800 # ???
 
 '''ELEVATOR'''
-static var ELEVATOR_MIN_EXTENSION:float = 0.07
+static var ELEVATOR_MIN_EXTENSION:float = 0.02
 static var ELEVATOR_MAX_EXTENSION:float = 0.92

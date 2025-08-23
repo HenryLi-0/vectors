@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://okd0sabswmfq"]
+[gd_scene load_steps=38 format=3 uid="uid://okd0sabswmfq"]
 
 [ext_resource type="PackedScene" uid="uid://c4fr8kdjrw26t" path="res://assets/robots/yr2025 - frc1778/drivetrain.glb" id="1_1f2gu"]
 [ext_resource type="Script" uid="uid://cobmb6ekmcrs1" path="res://scenes/robots/1778/constants.gd" id="1_sdr17"]
@@ -25,6 +25,10 @@
 [ext_resource type="Script" uid="uid://lukb6dme1fuc" path="res://scenes/robots/1778/s_elevator.gd" id="16_gg2tu"]
 [ext_resource type="PackedScene" uid="uid://cfsyoe4u7liwp" path="res://scenes/gamepieces/coral.tscn" id="21_wfe60"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_voqhf"]
+height = 0.709
+radius = 0.02
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_wfe60"]
 margin = 0.001
 size = Vector3(0.641, 0.001, 0.075)
@@ -38,10 +42,6 @@ size = Vector3(0.009, 0.147, 0.15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_voqhf"]
 size = Vector3(0.709, 0.006, 0.006)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_voqhf"]
-height = 0.709
-radius = 0.02
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t12an"]
 height = 0.125
@@ -65,6 +65,10 @@ size = Vector3(0.025, 0.965, 0.051)
 [sub_resource type="BoxShape3D" id="BoxShape3D_3664u"]
 size = Vector3(0.9, 0.9, 0.1)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gg2tu"]
+height = 0.125
+radius = 0.04
+
 [node name="1778Robot" type="Node3D" node_paths=PackedStringArray("drivetrain")]
 script = ExtResource("1_voqhf")
 drivetrain = NodePath("Drivetrain")
@@ -78,13 +82,12 @@ unique_name_in_owner = true
 script = ExtResource("1_t12an")
 
 [node name="Drivetrain" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 mass = 36.48
 center_of_mass_mode = 1
 script = ExtResource("2_fu0ky")
 
 [node name="GroundIntake" type="RigidBody3D" parent="Drivetrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, -0.33, 0.171)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0.171, 0.33)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
@@ -92,8 +95,17 @@ mass = 7.0
 center_of_mass_mode = 1
 script = ExtResource("4_gjlni")
 
+[node name="detection" type="Area3D" parent="Drivetrain/GroundIntake"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("15_bkg4a")
+detectorName = "Ground Intake"
+
+[node name="collision" type="CollisionShape3D" parent="Drivetrain/GroundIntake/detection"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.375, -0.189, 0.118)
+shape = SubResource("CylinderShape3D_voqhf")
+
 [node name="TopRollers" type="RigidBody3D" parent="Drivetrain/GroundIntake"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.02, -0.234, 0.193)
+transform = Transform3D(1, 0, 0, 0, 1, -1.06581e-14, 0, 1.06581e-14, 1, -0.02, 0.193, 0.234)
 collision_layer = 2
 collision_mask = 2
 axis_lock_linear_x = true
@@ -118,7 +130,7 @@ node_b = NodePath("..")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="BottomRollers" type="RigidBody3D" parent="Drivetrain/GroundIntake"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.02, -0.234, 0.043)
+transform = Transform3D(1, 0, 0, 0, 1, -1.06581e-14, 0, 1.06581e-14, 1, -0.02, 0.043, 0.234)
 collision_layer = 2
 collision_mask = 2
 axis_lock_linear_x = true
@@ -144,7 +156,7 @@ node_b = NodePath("..")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="FarLeftRoller" type="RigidBody3D" parent="Drivetrain/GroundIntake"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.688, -0.118, 0.14)
+transform = Transform3D(1, 0, 0, 0, 1, -1.06581e-14, 0, 1.06581e-14, 1, -0.688, 0.14, 0.118)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
@@ -165,7 +177,7 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 
 [node name="MiddleLeftRoller" type="RigidBody3D" parent="Drivetrain/GroundIntake"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.538, -0.118, 0.14)
+transform = Transform3D(1, 0, 0, 0, 1, -1.06581e-14, 0, 1.06581e-14, 1, -0.538, 0.14, 0.118)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
@@ -186,7 +198,7 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 
 [node name="MiddleRightRoller" type="RigidBody3D" parent="Drivetrain/GroundIntake"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.211, -0.118, 0.14)
+transform = Transform3D(1, 0, 0, 0, 1, -1.06581e-14, 0, 1.06581e-14, 1, -0.211, 0.14, 0.118)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
@@ -208,7 +220,7 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 
 [node name="FarRightRoller" type="RigidBody3D" parent="Drivetrain/GroundIntake"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.061, -0.118, 0.14)
+transform = Transform3D(1, 0, 0, 0, 1, -1.06581e-14, 0, 1.06581e-14, 1, -0.061, 0.14, 0.118)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
@@ -230,59 +242,59 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 
 [node name="ground-intake" parent="Drivetrain/GroundIntake" instance=ExtResource("2_ftya3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
 [node name="left plate" type="CollisionShape3D" parent="Drivetrain/GroundIntake"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.721, -0.066, 0.134)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.721, 0.134, 0.066)
 shape = SubResource("BoxShape3D_gjlni")
 
+[node name="coral" parent="Drivetrain/GroundIntake/left plate" instance=ExtResource("7_wfe60")]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0.701, 0.082, -0.0910001)
+
 [node name="right plate" type="CollisionShape3D" parent="Drivetrain/GroundIntake"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02, -0.066, 0.159)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.02, 0.159, 0.066)
 shape = SubResource("BoxShape3D_gjlni")
 
 [node name="center roller" type="CollisionShape3D" parent="Drivetrain/GroundIntake"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.375, -0.118, 0.118)
+transform = Transform3D(1, 0, 0, 0, 1, -1.06581e-14, 0, 1.06581e-14, 1, -0.375, 0.118, 0.118)
 shape = SubResource("CylinderShape3D_w565x")
 
 [node name="top shield" type="CollisionShape3D" parent="Drivetrain/GroundIntake"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.374, -0.139, 0.137)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.374, 0.137, 0.139)
 shape = SubResource("BoxShape3D_voqhf")
 
 [node name="top shield that shouldnt exist" type="CollisionShape3D" parent="Drivetrain/GroundIntake"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.374, -0.164, 0.187)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.374, 0.187, 0.164)
 shape = SubResource("BoxShape3D_voqhf")
 
 [node name="bottom shield" type="CollisionShape3D" parent="Drivetrain/GroundIntake"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.374, -0.139, 0.099)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.374, 0.099, 0.139)
 shape = SubResource("BoxShape3D_voqhf")
 
 [node name="bottom shield that shouldnt exist" type="CollisionShape3D" parent="Drivetrain/GroundIntake"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.374, -0.164, 0.049)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.374, 0.049, 0.164)
 shape = SubResource("BoxShape3D_voqhf")
 
-[node name="detection" type="Area3D" parent="Drivetrain/GroundIntake"]
-script = ExtResource("15_bkg4a")
-
-[node name="collision" type="CollisionShape3D" parent="Drivetrain/GroundIntake/detection"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.375, -0.189, 0.118)
-shape = SubResource("CylinderShape3D_voqhf")
-
 [node name="ElevatorStageOne" type="RigidBody3D" parent="Drivetrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0.07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, -0.025)
 axis_lock_linear_x = true
 axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+mass = 1.874
+center_of_mass_mode = 1
 script = ExtResource("16_gg2tu")
 
 [node name="ElevatorStageTwo" type="RigidBody3D" parent="Drivetrain/ElevatorStageOne"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.025)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, -3.72529e-09)
 axis_lock_linear_x = true
 axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-mass = 0.001
+mass = 3.075
+center_of_mass_mode = 1
 
 [node name="Arm" type="RigidBody3D" parent="Drivetrain/ElevatorStageOne/ElevatorStageTwo"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.127, 0.03)
@@ -304,13 +316,14 @@ script = ExtResource("11_kywwa")
 rotateX = true
 
 [node name="end-effector-back-rollers" parent="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndBackRollers" instance=ExtResource("8_hoppt")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
 [node name="collision" type="CollisionShape3D" parent="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndBackRollers"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.063, 0, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.063, 0, 0)
 shape = SubResource("CylinderShape3D_t12an")
 
 [node name="constrain" type="PinJoint3D" parent="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndBackRollers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.125, 0, 0)
 node_a = NodePath("../..")
 node_b = NodePath("..")
 
@@ -325,13 +338,14 @@ inverted = true
 rotateX = true
 
 [node name="end-effector-front-rollers" parent="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndFrontRollers" instance=ExtResource("9_2naya")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
 [node name="collision" type="CollisionShape3D" parent="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndFrontRollers"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.063, 0, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.063, 0, 0)
 shape = SubResource("CylinderShape3D_t12an")
 
 [node name="constrain" type="PinJoint3D" parent="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndFrontRollers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.125, 0, 0)
 node_a = NodePath("../..")
 node_b = NodePath("..")
 
@@ -354,32 +368,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.127, 0)
 shape = SubResource("BoxShape3D_tb3rq")
 
 [node name="elevator-stage-1" parent="Drivetrain/ElevatorStageOne" instance=ExtResource("3_sd3rr")]
-transform = Transform3D(1, 0, 0, 0, 1, -1.06581e-14, 0, 1.06581e-14, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
 [node name="bottom box tubing" type="CollisionShape3D" parent="Drivetrain/ElevatorStageOne"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.013)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013, 0)
 shape = SubResource("BoxShape3D_t12an")
 
 [node name="top box tubing" type="CollisionShape3D" parent="Drivetrain/ElevatorStageOne"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -4.09782e-08, 0.953)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.953, 0)
 shape = SubResource("BoxShape3D_t12an")
 
 [node name="left box tubing" type="CollisionShape3D" parent="Drivetrain/ElevatorStageOne"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.133, -2.04891e-08, 0.482)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.133, 0.482, 0)
 shape = SubResource("BoxShape3D_fu0ky")
 
 [node name="right box tubing" type="CollisionShape3D" parent="Drivetrain/ElevatorStageOne"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.134, -2.04891e-08, 0.482)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134, 0.482, 0)
 shape = SubResource("BoxShape3D_fu0ky")
 
 [node name="collision" type="CollisionShape3D" parent="Drivetrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.05, -2.18557e-09)
 shape = SubResource("BoxShape3D_3664u")
 
 [node name="drivetrain" parent="Drivetrain" instance=ExtResource("1_1f2gu")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
 [node name="Coral" parent="." instance=ExtResource("21_wfe60")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.151, 0.057, 0.675)
+
+[node name="detection" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.761, 0.235)
+script = ExtResource("15_bkg4a")
+detectorName = "Arm"
+
+[node name="collision" type="CollisionShape3D" parent="detection"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_gg2tu")
 
 [connection signal="area_entered" from="Drivetrain/GroundIntake/detection" to="Drivetrain/GroundIntake/detection" method="_on_area_entered"]
 [connection signal="body_entered" from="Drivetrain/GroundIntake/detection" to="Drivetrain/GroundIntake/detection" method="_on_body_entered"]
