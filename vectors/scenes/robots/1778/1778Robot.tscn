@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://okd0sabswmfq"]
+[gd_scene load_steps=36 format=3 uid="uid://okd0sabswmfq"]
 
 [ext_resource type="PackedScene" uid="uid://c4fr8kdjrw26t" path="res://assets/robots/yr2025 - frc1778/drivetrain.glb" id="1_1f2gu"]
 [ext_resource type="Script" uid="uid://cobmb6ekmcrs1" path="res://scenes/robots/1778/constants.gd" id="1_sdr17"]
@@ -21,10 +21,12 @@
 [ext_resource type="PackedScene" uid="uid://baaifhsj6t6ob" path="res://assets/robots/yr2025 - frc1778/end-effector-front-rollers.glb" id="9_2naya"]
 [ext_resource type="Script" uid="uid://s4u55bmads68" path="res://scenes/robots/1778/s_rollers.gd" id="11_kywwa"]
 [ext_resource type="Script" uid="uid://clf3usst02y41" path="res://scenes/robots/1778/s_arm.gd" id="11_w565x"]
+[ext_resource type="Script" uid="uid://nuy7dwouhxio" path="res://scenes/gamepieces/s_interact.gd" id="15_bkg4a"]
 [ext_resource type="PackedScene" uid="uid://cfsyoe4u7liwp" path="res://scenes/gamepieces/coral.tscn" id="21_wfe60"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wfe60"]
-size = Vector3(0.641, 0.07, 0.07)
+margin = 0.001
+size = Vector3(0.641, 0.001, 0.075)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_w565x"]
 height = 0.044
@@ -32,6 +34,13 @@ radius = 0.025
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gjlni"]
 size = Vector3(0.009, 0.147, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_voqhf"]
+size = Vector3(0.709, 0.006, 0.006)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_voqhf"]
+height = 0.709
+radius = 0.02
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t12an"]
 height = 0.125
@@ -96,7 +105,7 @@ rotateX = true
 [node name="ground-intake-top-rollers" parent="Drivetrain/GroundIntake/TopRollers" instance=ExtResource("3_ijgdu")]
 
 [node name="collision" type="CollisionShape3D" parent="Drivetrain/GroundIntake/TopRollers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.355, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.355, 0, 0)
 shape = SubResource("BoxShape3D_wfe60")
 
 [node name="constrain" type="PinJoint3D" parent="Drivetrain/GroundIntake/TopRollers"]
@@ -233,6 +242,29 @@ shape = SubResource("BoxShape3D_gjlni")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.375, -0.118, 0.118)
 shape = SubResource("CylinderShape3D_w565x")
 
+[node name="top shield" type="CollisionShape3D" parent="Drivetrain/GroundIntake"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.374, -0.139, 0.137)
+shape = SubResource("BoxShape3D_voqhf")
+
+[node name="top shield that shouldnt exist" type="CollisionShape3D" parent="Drivetrain/GroundIntake"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.374, -0.164, 0.187)
+shape = SubResource("BoxShape3D_voqhf")
+
+[node name="bottom shield" type="CollisionShape3D" parent="Drivetrain/GroundIntake"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.374, -0.139, 0.099)
+shape = SubResource("BoxShape3D_voqhf")
+
+[node name="bottom shield that shouldnt exist" type="CollisionShape3D" parent="Drivetrain/GroundIntake"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.374, -0.164, 0.049)
+shape = SubResource("BoxShape3D_voqhf")
+
+[node name="detection" type="Area3D" parent="Drivetrain/GroundIntake"]
+script = ExtResource("15_bkg4a")
+
+[node name="collision" type="CollisionShape3D" parent="Drivetrain/GroundIntake/detection"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.375, -0.189, 0.118)
+shape = SubResource("CylinderShape3D_voqhf")
+
 [node name="ElevatorStageOne" type="RigidBody3D" parent="Drivetrain"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.025, 0.07)
 axis_lock_linear_x = true
@@ -344,8 +376,8 @@ shape = SubResource("BoxShape3D_3664u")
 
 [node name="drivetrain" parent="Drivetrain" instance=ExtResource("1_1f2gu")]
 
-[node name="Camera3D" type="Camera3D" parent="Drivetrain"]
-transform = Transform3D(-4.37114e-08, -1.55294e-22, -1, -1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1.91069e-15, -0.645, -0.564, 0.05)
-
 [node name="Coral" parent="." instance=ExtResource("21_wfe60")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.151, 0.057, 0.675)
+
+[connection signal="area_entered" from="Drivetrain/GroundIntake/detection" to="Drivetrain/GroundIntake/detection" method="_on_area_entered"]
+[connection signal="body_entered" from="Drivetrain/GroundIntake/detection" to="Drivetrain/GroundIntake/detection" method="_on_body_entered"]

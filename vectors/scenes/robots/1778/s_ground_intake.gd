@@ -4,6 +4,8 @@ extends RigidBody3D
 @export var kI:float = 0
 @export var kD:float = 0.12
 
+@onready var detection: Area3D = $detection
+
 class PIDController:
 	var p: float
 	var i: float
@@ -51,3 +53,4 @@ func do_physics(inDelta:float) -> void:
 	#apply_torque(global_transform.basis.x * fb * delta)
 	rotation.y = 0
 	rotation.z = 0
+	
