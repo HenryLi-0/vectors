@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://okd0sabswmfq"]
+[gd_scene load_steps=37 format=3 uid="uid://okd0sabswmfq"]
 
 [ext_resource type="PackedScene" uid="uid://c4fr8kdjrw26t" path="res://assets/robots/yr2025 - frc1778/drivetrain.glb" id="1_1f2gu"]
 [ext_resource type="Script" uid="uid://cobmb6ekmcrs1" path="res://scenes/robots/1778/constants.gd" id="1_sdr17"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://s4u55bmads68" path="res://scenes/robots/1778/s_rollers.gd" id="11_kywwa"]
 [ext_resource type="Script" uid="uid://clf3usst02y41" path="res://scenes/robots/1778/s_arm.gd" id="11_w565x"]
 [ext_resource type="Script" uid="uid://nuy7dwouhxio" path="res://scenes/gamepieces/s_interact.gd" id="15_bkg4a"]
+[ext_resource type="Script" uid="uid://lukb6dme1fuc" path="res://scenes/robots/1778/s_elevator.gd" id="16_gg2tu"]
 [ext_resource type="PackedScene" uid="uid://cfsyoe4u7liwp" path="res://scenes/gamepieces/coral.tscn" id="21_wfe60"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wfe60"]
@@ -266,15 +267,16 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.375
 shape = SubResource("CylinderShape3D_voqhf")
 
 [node name="ElevatorStageOne" type="RigidBody3D" parent="Drivetrain"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.025, 0.07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0.07)
 axis_lock_linear_x = true
 axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+script = ExtResource("16_gg2tu")
 
 [node name="ElevatorStageTwo" type="RigidBody3D" parent="Drivetrain/ElevatorStageOne"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.025)
 axis_lock_linear_x = true
 axis_lock_linear_z = true
 axis_lock_angular_x = true
@@ -352,22 +354,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.127, 0)
 shape = SubResource("BoxShape3D_tb3rq")
 
 [node name="elevator-stage-1" parent="Drivetrain/ElevatorStageOne" instance=ExtResource("3_sd3rr")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, -1.06581e-14, 0, 1.06581e-14, 1, 0, 0, 0)
 
 [node name="bottom box tubing" type="CollisionShape3D" parent="Drivetrain/ElevatorStageOne"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.013)
 shape = SubResource("BoxShape3D_t12an")
 
 [node name="top box tubing" type="CollisionShape3D" parent="Drivetrain/ElevatorStageOne"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.953, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -4.09782e-08, 0.953)
 shape = SubResource("BoxShape3D_t12an")
 
 [node name="left box tubing" type="CollisionShape3D" parent="Drivetrain/ElevatorStageOne"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.133, 0.482, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.133, -2.04891e-08, 0.482)
 shape = SubResource("BoxShape3D_fu0ky")
 
 [node name="right box tubing" type="CollisionShape3D" parent="Drivetrain/ElevatorStageOne"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134, 0.482, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.134, -2.04891e-08, 0.482)
 shape = SubResource("BoxShape3D_fu0ky")
 
 [node name="collision" type="CollisionShape3D" parent="Drivetrain"]

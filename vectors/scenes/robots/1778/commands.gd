@@ -10,6 +10,7 @@ extends Node
 @onready var g_middle_right_roller: RigidBody3D = $"../Drivetrain/GroundIntake/MiddleRightRoller"
 @onready var g_far_right_roller: RigidBody3D = $"../Drivetrain/GroundIntake/FarRightRoller"
 
+@onready var elevator: RigidBody3D = $"../Drivetrain/ElevatorStageOne"
 @onready var e_arm: RigidBody3D = $"../Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm"
 @onready var e_back_rollers: RigidBody3D = $"../Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndBackRollers"
 @onready var e_front_rollers: RigidBody3D = $"../Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndFrontRollers"
@@ -29,13 +30,15 @@ func _physics_process(delta: float) -> void:
 	#print(g_top_rollers.rotation.x)
 	#g_far_left_roller.setPower(10)
 	if Input.is_action_pressed("test"):
-		g_intake.setGoal(0.87)
+		elevator.setGoalPercent(1)
+		#g_intake.setGoal(0.87)
 		#g_intake.setGoal(PI - 2.325886)
 		#e_back_rollers.setPower(-1)
-		e_arm.setGoal(-PI/2)
+		#e_arm.setGoal(-PI/2)
 	else:
-		g_intake.setGoal(-PI/2)
-		e_arm.setGoal(PI/4)
+		elevator.setGoalPercent(0)
+		#g_intake.setGoal(-PI/2)
+		#e_arm.setGoal(PI/4)
 
 	g_far_left_roller.do_physics(delta)
 	g_middle_left_roller.do_physics(delta)
@@ -45,6 +48,7 @@ func _physics_process(delta: float) -> void:
 	g_bottom_rollers.do_physics(delta)
 	g_intake.do_physics(delta)
 	
+	elevator.do_physics(delta)
 	e_front_rollers.do_physics(delta)
 	e_back_rollers.do_physics(delta)
 	e_arm.do_physics(delta)

@@ -7,12 +7,10 @@ func _on_body_entered(body: Node3D) -> void:
 	print(detectorName + ":")
 	
 	if body is RigidBody3D:
-		if body.name == "Coral":
-			print("> get coral")
 		# future algae implementation!
-		elif body.name == "Algae":
-			print("> get algae")
-		body.control(self)
+		if body.name == "Coral" or body.name == "Algae":
+			print("> get " + str(body.name))
+			body.control(self)
 	else:
 		print("> something: " + str(body.name))
 	
