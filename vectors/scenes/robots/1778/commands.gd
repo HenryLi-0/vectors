@@ -29,21 +29,30 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func updateState(state) -> void:
+	pass
+
+
 func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("button_x"):
+		updateState(CONSTANTS.STATE.READY_C4)
+	if Input.is_action_pressed("trigger_right"):
+		updateState(CONSTANTS.STATE.SCORE_C4)
 	#print(g_top_rollers.rotation.x)
 	#g_far_left_roller.setPower(10)
-	if Input.is_action_pressed("test"):
-		elevator.setGoalPercent(1)
-		#g_intake.setGoal(0.87)
-		#g_intake.setGoal(PI - 2.325886)
-		#e_back_rollers.setPower(-1)
-		e_arm.setGoal(-PI/2)
-	else:
-		elevator.setGoalPercent(0)
-		#g_intake.setGoal(-PI/2)
-		e_arm.setGoal(PI/4)
-
-
+	#if Input.is_action_pressed("test"):
+		##g_intake.setGoal(0.87)
+		##g_intake.setGoal(PI - 2.325886)
+		##e_back_rollers.setPower(-1)
+		#elevator.setGoalPosition(CONSTANTS.ELEVATOR_POSITIONS.L4Before * 0.0254/1.5)
+		#e_arm.setGoal(CONSTANTS.ARM_POSITIONS.L4ScoreCoral * PI/180 - PI)
+	#else:
+		#elevator.setGoalPercent(0)
+		##g_intake.setGoal(-PI/2)
+		#elevator.setGoalPosition(CONSTANTS.ELEVATOR_POSITIONS.L4Score * 0.0254/1.5)
+		#e_arm.setGoal(CONSTANTS.ARM_POSITIONS.L4FinishScoreCoral * PI/180 - PI)
+#
+#
 
 
 	'''physics stuff'''

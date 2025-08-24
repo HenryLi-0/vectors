@@ -14,25 +14,27 @@ static var ELEVATOR_MAX_EXTENSION:float = 0.92
 
 '''SCORING'''
 enum STATE {
-	IDLE,		# Subsystems idle
-	INTAKE,		# Intake extended, arm ready
-	TRANSFER,	# Intake up, arm grabbing
-	TRAVEL, 	# arm down, holding coral
-	READY_C2,	# ready position L2 coral
-	SCORE_C2,	# scoring L2 coral
-	READY_C3,	# ready position L3 coral
-	SCORE_C3,	# scoring L3 coral
-	READY_C4,	# ready position L4 coral
-	SCORE_C4,	# scoring L4 coral
-	#GRAB_A2,	# grabbing L2 algae
-	#GRAB_A3,	# grabbing L3 algae
-	#BARGE,		# arm up, elevator up, barge
-	#PROCESSOR,	# arm side, elevator down, processor
+	IDLE,			# Subsystems idle
+	INTAKE,			# Intake extended, arm ready
+	PRETRANSFER,	# intake up, arm ready
+	TRANSFER,		# Intake up, arm grabbing
+	TRAVEL, 		# arm down, holding coral
+	READY_C2,		# ready position L2 coral
+	SCORE_C2,		# scoring L2 coral
+	READY_C3,		# ready position L3 coral
+	SCORE_C3,		# scoring L3 coral
+	READY_C4,		# ready position L4 coral
+	SCORE_C4,		# scoring L4 coral
+	#GRAB_A2,		# grabbing L2 algae
+	#GRAB_A3,		# grabbing L3 algae
+	#BARGE,			# arm up, elevator up, barge
+	#PROCESSOR,		# arm side, elevator down, processor
 	}
 '''
 Reference
 https://github.com/FIRST1778/2025-Robot-Code-Public/blob/main/src/main/java/org/chillout1778/subsystems/Elevator.kt#L23
 '''
+static var ELEVATOR_CONVERSION:float = 0.0254/1.5
 enum ELEVATOR_POSITIONS {
 	# UNITS ARE IN INCHES, CONVERT TO METERS!
 	# inches * 0.0254
@@ -49,20 +51,29 @@ enum ELEVATOR_POSITIONS {
 Reference:
 https://github.com/FIRST1778/2025-Robot-Code-Public/blob/main/src/main/java/org/chillout1778/subsystems/Arm.kt#L42
 '''
+static var ARM_CONVERSION:float = PI/180
+static var ARM_OFFSET:float = -PI
 enum ARM_POSITIONS {
 	# UNITS ARE IN DEGREES, CONVERT TO RADIANS + APPLY SHIFT!
 	# degrees * PI/180
+	# shift by -1/2 rotations
+	Down = 0,
 	L4ScoreCoral = 135,
 	L4FinishScoreCoral = 100,
 	AboveScoreCoral = 160,
 	FinishScoreCoral = 105,	
 }
-static var SCORING_POSITIONS = {
-	# ELEVATOR (INCHES), ARM (DEGREES)
-	STATE.READY_C2 : [ELEVATOR_POSITIONS.L2Before	, ARM_POSITIONS.AboveScoreCoral		],
-	STATE.SCORE_C2 : [ELEVATOR_POSITIONS.L2Score	, ARM_POSITIONS.FinishScoreCoral	],
-	STATE.READY_C3 : [ELEVATOR_POSITIONS.L3Before	, ARM_POSITIONS.AboveScoreCoral		],
-	STATE.SCORE_C3 : [ELEVATOR_POSITIONS.L3Score	, ARM_POSITIONS.FinishScoreCoral	],
-	STATE.READY_C4 : [ELEVATOR_POSITIONS.L4Before	, ARM_POSITIONS.L4ScoreCoral		],
-	STATE.SCORE_C4 : [ELEVATOR_POSITIONS.L4Score	, ARM_POSITIONS.L4FinishScoreCoral	],
+static var STATE_POSITIONS = {
+	# GROUND INTAKE RAISED?, GROUND ROLLER DIRECTION, ELEVATOR (INCHES), ARM (DEGREES), ARM ROLLERS DIRECTION
+	STATE.IDLE			: ["idc",	 0,	"idc",							"idc",								 0	],
+	STATE.INTAKE		: [false,	-1,	ELEVATOR_POSITIONS.PreTransfer,	ARM_POSITIONS.Down,					 0	],
+	STATE.PRETRANSFER	: [true,	 0,	ELEVATOR_POSITIONS.PreTransfer,	ARM_POSITIONS.Down,					 0	],
+	STATE.TRANSFER		: [true,	 1,	ELEVATOR_POSITIONS.Transfer,	ARM_POSITIONS.Down,					-1	],
+	STATE.TRAVEL		: [false,	 0,	ELEVATOR_POSITIONS.Transfer,	ARM_POSITIONS.Down,					 0	],
+	STATE.READY_C2 		: [true,	 0,	ELEVATOR_POSITIONS.L2Before,	ARM_POSITIONS.AboveScoreCoral,		 0	],
+	STATE.SCORE_C2 		: [true,	 0,	ELEVATOR_POSITIONS.L2Score,		ARM_POSITIONS.FinishScoreCoral,		 1	],
+	STATE.READY_C3 		: [true,	 0,	ELEVATOR_POSITIONS.L3Before,	ARM_POSITIONS.AboveScoreCoral,		 0	],
+	STATE.SCORE_C3 		: [true,	 0,	ELEVATOR_POSITIONS.L3Score,		ARM_POSITIONS.FinishScoreCoral,		 1	],
+	STATE.READY_C4 		: [true,	 0,	ELEVATOR_POSITIONS.L4Before,	ARM_POSITIONS.L4ScoreCoral,			 0	],
+	STATE.SCORE_C4 		: [true,	 0,	ELEVATOR_POSITIONS.L4Score,		ARM_POSITIONS.L4FinishScoreCoral,	 1	],
 }
