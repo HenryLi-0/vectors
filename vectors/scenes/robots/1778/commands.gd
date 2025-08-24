@@ -15,6 +15,8 @@ extends Node
 @onready var e_back_rollers: RigidBody3D = $"../Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndBackRollers"
 @onready var e_front_rollers: RigidBody3D = $"../Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndFrontRollers"
 
+var CONSTANTS = preload("res://scenes/robots/1778/constants.gd")
+
 func _ready() -> void:
 	g_top_rollers.setPower(50)
 	g_bottom_rollers.setPower(50)
@@ -41,6 +43,11 @@ func _physics_process(delta: float) -> void:
 		#g_intake.setGoal(-PI/2)
 		e_arm.setGoal(PI/4)
 
+
+
+
+	'''physics stuff'''
+	# ground intake physics
 	g_far_left_roller.do_physics(delta)
 	g_middle_left_roller.do_physics(delta)
 	g_middle_right_roller.do_physics(delta)
@@ -49,9 +56,11 @@ func _physics_process(delta: float) -> void:
 	g_bottom_rollers.do_physics(delta)
 	g_intake.do_physics(delta)
 	
+	# elevator and arm physics
 	elevator.do_physics(delta)
 	e_front_rollers.do_physics(delta)
 	e_back_rollers.do_physics(delta)
 	e_arm.do_physics(delta)
 	
+	# drivetrain
 	drivetrain.do_physics(delta)	
