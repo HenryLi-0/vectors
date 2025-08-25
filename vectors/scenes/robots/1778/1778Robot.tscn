@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://okd0sabswmfq"]
+[gd_scene load_steps=38 format=3 uid="uid://okd0sabswmfq"]
 
 [ext_resource type="PackedScene" uid="uid://c4fr8kdjrw26t" path="res://assets/robots/yr2025 - frc1778/drivetrain.glb" id="1_1f2gu"]
 [ext_resource type="Script" uid="uid://cobmb6ekmcrs1" path="res://scenes/robots/1778/constants.gd" id="1_sdr17"]
@@ -27,7 +27,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_voqhf"]
 height = 0.709
-radius = 0.02
+radius = 0.05
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wfe60"]
 margin = 0.001
@@ -45,12 +45,7 @@ size = Vector3(0.709, 0.006, 0.006)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gg2tu"]
 height = 0.125
-radius = 0.07
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_gg2tu"]
-top_radius = 0.07
-bottom_radius = 0.07
-height = 0.125
+radius = 0.045
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t12an"]
 height = 0.125
@@ -322,10 +317,6 @@ detectorName = "Arm"
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_gg2tu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/detection"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_gg2tu")
-
 [node name="EndBackRollers" type="RigidBody3D" parent="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.063, 0.539, 0.139)
 axis_lock_linear_x = true
@@ -414,5 +405,10 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 [node name="Coral" parent="." instance=ExtResource("21_wfe60")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.151, 0.057, 0.675)
 
+[node name="Algae" parent="." instance=ExtResource("21_wfe60")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.151, 0.907, 0.225)
+
 [connection signal="area_entered" from="Drivetrain/GroundIntake/detection" to="Drivetrain/GroundIntake/detection" method="_on_area_entered"]
 [connection signal="body_entered" from="Drivetrain/GroundIntake/detection" to="Drivetrain/GroundIntake/detection" method="_on_body_entered"]
+[connection signal="area_entered" from="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/detection" to="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/detection" method="_on_area_entered"]
+[connection signal="body_entered" from="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/detection" to="Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/detection" method="_on_body_entered"]

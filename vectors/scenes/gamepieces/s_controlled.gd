@@ -14,7 +14,7 @@ func _physics_process(delta: float) -> void:
 
 '''getControlled() lol'''
 func control(object:Node3D):
-	print("controlled by: " + str(object.name))
+	print("controlled by: " + str(object.detectorName))
 	isControlled = true
 	controlledBy = object
 	relativeTransform = object.global_transform.affine_inverse() * subject.global_transform

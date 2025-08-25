@@ -26,6 +26,7 @@ func do_physics(inDelta: float) -> void:
 	linear_velocity.x = clamp(linear_velocity.x, -CONSTANTS.DRIVE_MAX_SPEED, CONSTANTS.DRIVE_MAX_SPEED)
 	linear_velocity.y = clamp(linear_velocity.y, -CONSTANTS.DRIVE_MAX_SPEED, CONSTANTS.DRIVE_MAX_SPEED)
 	linear_velocity.z = clamp(linear_velocity.z, -CONSTANTS.DRIVE_MAX_SPEED, CONSTANTS.DRIVE_MAX_SPEED)
+
 	
 	apply_torque(Vector3(0, c_rotation * CONSTANTS.TURN_FORCE, 0))
 	angular_velocity.y = clamp(angular_velocity.y, -CONSTANTS.DRIVE_MAX_ROT, CONSTANTS.DRIVE_MAX_ROT)

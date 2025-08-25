@@ -4,5 +4,5 @@ extends Camera3D
 
 func _process(delta: float) -> void:
 	pass
-	#position.z = robot.getDrivetrainPosition().z
-	#position.x = robot.getDrivetrainPosition().x - 10
+	position.z = robot.getDrivetrainPosition().z
+	position.x = robot.getDrivetrainPosition().x - 10

@@ -31,6 +31,7 @@ class PIDController:
 
 var pidController:PIDController = PIDController.new(kP, kI, kD)
 var goal:float = 0
+var pos:float = 0
 
 var delta:float = 0
 
@@ -41,11 +42,13 @@ func setGoal(newGoal:float = 0) -> void:
 '''Process physics.'''
 func do_physics(inDelta: float) -> void:
 	delta = inDelta
-	var fb = pidController.calculate(rotation.z, goal, delta)
+
+	var fb = pidController.calculate(pos, goal, delta)
 	#print("goal is " + str(goalrotation.z))
 	
 	transform = transform.orthonormalized()
 	rotate_object_local(Vector3(0,0,1), fb * delta)
+	pos += fb * delta
 	#apply_torque(global_transform.basis.z * fb * delta)
 	rotation.x = 0
 	rotation.y = 0
