@@ -23,7 +23,7 @@ func control(object:Node3D):
 	subject.linear_velocity = Vector3.ZERO
 	subject.angular_velocity = Vector3.ZERO
 
-'''Release the object from control'''
-func release():
+'''Drops the object from control'''
+func drop():
 	isControlled = false
 	subject.gravity_scale = 1

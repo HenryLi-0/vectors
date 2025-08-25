@@ -15,8 +15,10 @@ func do_physics(inDelta: float) -> void:
 	delta = inDelta
 	
 	if not(automation):
-		c_translation = Input.get_vector("drive_neg_x", "drive_pos_x", "drive_neg_y", "drive_pos_y").normalized()
+		c_translation = Input.get_vector("drive_neg_x", "drive_pos_x", "drive_neg_y", "drive_pos_y")
+		c_translation = c_translation.normalized() * c_translation.length()
 		c_rotation = Input.get_axis("turn_neg", "turn_pos")
+		c_rotation = sign(c_rotation) * (c_rotation**2)
 	else:
 		pass
 		

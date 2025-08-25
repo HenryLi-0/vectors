@@ -16,6 +16,7 @@ static var ELEVATOR_MAX_EXTENSION:float = 0.92
 enum STATE {
 	IDLE,			# Subsystems idle
 	INTAKE,			# Intake extended, arm ready
+	LIFTINTAKE,		# Intake lifts up, nothing else changes
 	PRETRANSFER,	# intake up, arm ready
 	TRANSFER,		# Intake up, arm grabbing
 	TRAVEL, 		# arm down, holding coral
@@ -34,7 +35,7 @@ enum STATE {
 Reference
 https://github.com/FIRST1778/2025-Robot-Code-Public/blob/main/src/main/java/org/chillout1778/subsystems/Elevator.kt#L23
 '''
-static var ELEVATOR_CONVERSION:float = 0.0254/1.5
+static var ELEVATOR_CONVERSION:float = 0.0254/2
 enum ELEVATOR_POSITIONS {
 	# UNITS ARE IN INCHES, CONVERT TO METERS!
 	# inches * 0.0254
@@ -67,6 +68,7 @@ static var STATE_POSITIONS = {
 	# GROUND INTAKE RAISED?, GROUND ROLLER DIRECTION, ELEVATOR (INCHES), ARM (DEGREES), ARM ROLLERS DIRECTION
 	STATE.IDLE			: ["idc",	 0,	"idc",							"idc",								 0	],
 	STATE.INTAKE		: [false,	-1,	ELEVATOR_POSITIONS.PreTransfer,	ARM_POSITIONS.Down,					 0	],
+	STATE.LIFTINTAKE	: [true,	-1, "idc", 							"idc",								 0	],
 	STATE.PRETRANSFER	: [true,	 0,	ELEVATOR_POSITIONS.PreTransfer,	ARM_POSITIONS.Down,					 0	],
 	STATE.TRANSFER		: [true,	 1,	ELEVATOR_POSITIONS.Transfer,	ARM_POSITIONS.Down,					-1	],
 	STATE.TRAVEL		: [false,	 0,	ELEVATOR_POSITIONS.Transfer,	ARM_POSITIONS.Down,					 0	],
@@ -76,4 +78,9 @@ static var STATE_POSITIONS = {
 	STATE.SCORE_C3 		: [true,	 0,	ELEVATOR_POSITIONS.L3Score,		ARM_POSITIONS.FinishScoreCoral,		 1	],
 	STATE.READY_C4 		: [true,	 0,	ELEVATOR_POSITIONS.L4Before,	ARM_POSITIONS.L4ScoreCoral,			 0	],
 	STATE.SCORE_C4 		: [true,	 0,	ELEVATOR_POSITIONS.L4Score,		ARM_POSITIONS.L4FinishScoreCoral,	 1	],
+}
+static var READY_SCORE_MAP = {
+	STATE.READY_C2: STATE.SCORE_C2,
+	STATE.READY_C3: STATE.SCORE_C3,
+	STATE.READY_C4: STATE.SCORE_C4,
 }

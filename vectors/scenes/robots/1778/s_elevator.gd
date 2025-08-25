@@ -2,11 +2,11 @@ extends RigidBody3D
 
 @export var kStageOneP:float = 6000
 @export var kStageOneI:float = 0
-@export var kStageOneD:float = 600
+@export var kStageOneD:float = 3000
 
 @export var kStageTwoP:float = 6000
 @export var kStageTwoI:float = 0
-@export var kStageTwoD:float = 400
+@export var kStageTwoD:float = 3000
 
 var CONSTANTS = preload("res://scenes/robots/1778/constants.gd")
 @onready var stageOne: RigidBody3D = $"."
