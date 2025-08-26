@@ -2,15 +2,18 @@ extends Node3D
 
 # Defines who is being controlled (in this case, the gamepieces!)
 @export var subject:RigidBody3D
+@export var objectName:String = "Coral"
 
 var isControlled:bool = false
 var controlledBy:Node3D
 var relativeTransform:Transform3D
 
+func _ready() -> void:
+	name = objectName
+
 func _physics_process(delta: float) -> void:
 	if isControlled:
 		subject.global_transform = controlledBy.global_transform * relativeTransform
-		
 
 '''getControlled() lol'''
 func control(object:Node3D):
@@ -22,6 +25,10 @@ func control(object:Node3D):
 	subject.gravity_scale = 0
 	subject.linear_velocity = Vector3.ZERO
 	subject.angular_velocity = Vector3.ZERO
+
+func override(desiredTransform:Transform3D):
+	if isControlled:
+		relativeTransform = desiredTransform
 
 '''Drops the object from control'''
 func drop():

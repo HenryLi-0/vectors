@@ -11,8 +11,10 @@ extends Node
 @onready var g_middle_right_roller: RigidBody3D = $"../Drivetrain/GroundIntake/MiddleRightRoller"
 @onready var g_far_right_roller: RigidBody3D = $"../Drivetrain/GroundIntake/FarRightRoller"
 
+
 @onready var elevator: RigidBody3D = $"../Drivetrain/ElevatorStageOne"
 @onready var e_arm: RigidBody3D = $"../Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm"
+@onready var e_detection: Area3D = $"../Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/detection"
 @onready var e_back_rollers: RigidBody3D = $"../Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndBackRollers"
 @onready var e_front_rollers: RigidBody3D = $"../Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndFrontRollers"
 
@@ -40,6 +42,7 @@ func updateState(state) -> void:
 		# ground intake raised?
 		if slice[0]: g_intake.setGoal(-PI/2)
 		else: g_intake.setGoal(0.87)
+		g_detection.setActive(not(slice[0]))
 	if str(slice[1]) != "idc":
 		# ground roller direction (-1 is in)
 		g_top_rollers.setPower(-1000 * slice[1])
@@ -54,6 +57,7 @@ func updateState(state) -> void:
 		# arm rollers direction (-1 is in)
 		e_front_rollers.setPower(-100 * slice[4])
 		e_back_rollers.setPower(-100 * slice[4])
+		e_detection.setActive(slice[4] < 0)
 		
 
 
@@ -68,8 +72,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("trigger_right"):
 		if currentState == CONSTANTS.STATE.READY_C4 or currentState == CONSTANTS.STATE.READY_C3 or currentState == CONSTANTS.STATE.READY_C2:
 			updateState(CONSTANTS.READY_SCORE_MAP[currentState])
+			e_detection.drop()
 
 	'''INTAKING'''
+	if Input.is_action_just_pressed("trigger_left"):
+		g_detection.drop()
 	if Input.is_action_pressed("trigger_left"):
 		updateState(CONSTANTS.STATE.INTAKE)
 	if Input.is_action_just_released("trigger_left"):

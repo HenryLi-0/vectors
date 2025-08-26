@@ -39,7 +39,7 @@ static var ELEVATOR_CONVERSION:float = 0.0254/2
 enum ELEVATOR_POSITIONS {
 	# UNITS ARE IN INCHES, CONVERT TO METERS!
 	# inches * 0.0254
-	PreTransfer = 36,
+	PreTransfer = 42, # originally 36
 	Transfer = 33,
 	L4Before = 55,
 	L4Score = 54,
