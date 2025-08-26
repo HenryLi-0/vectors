@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://bu548vr6s7a36"]
+
+[ext_resource type="Script" uid="uid://bj4v7unq212t1" path="res://scenes/field/s_reefBranch.gd" id="1_ll7kc"]
+[ext_resource type="PackedScene" uid="uid://cm8fw54l3cpct" path="res://assets/2025 reef pipe.glb" id="2_26e0f"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ll7kc"]
+height = 0.176
+radius = 0.021
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_26e0f"]
+height = 0.204
+radius = 0.021
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_n1had"]
+height = 1.35
+radius = 0.021
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_phnkw"]
+height = 0.308
+radius = 0.021
+
+[node name="ReefBranch" type="RigidBody3D"]
+script = ExtResource("1_ll7kc")
+
+[node name="2025 reef pipe" parent="." instance=ExtResource("2_26e0f")]
+
+[node name="L4 Top Bit" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.254, 1.719, 0)
+shape = SubResource("CylinderShape3D_ll7kc")
+
+[node name="L4 Back Bit" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0, 0, 1, 0.127, 1.493, 0)
+shape = SubResource("CylinderShape3D_26e0f")
+
+[node name="Reef Pipe Back" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.675, 0)
+shape = SubResource("CylinderShape3D_n1had")
+
+[node name="L3" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0, 0, 1, 0.127, 1.089, 0)
+shape = SubResource("CylinderShape3D_phnkw")
+
+[node name="L2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0, 0, 1, 0.127, 0.686, 0)
+shape = SubResource("CylinderShape3D_phnkw")
+
+[node name="L4" type="Area3D" parent="."]
+script = ExtResource("1_ll7kc")
+points = 5

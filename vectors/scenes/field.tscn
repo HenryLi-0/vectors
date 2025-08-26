@@ -86,6 +86,8 @@ shape = SubResource("BoxShape3D_7156t")
 transform = Transform3D(-0.587785, 0, -0.809017, 0, 1, 0, 0.809017, 0, -0.587785, 8.01877, 0.702397, -3.36115)
 shape = SubResource("BoxShape3D_7156t")
 
+[node name="Reef Walls" type="Node" parent="RigidBody3D"]
+
 [node name="Red Reef - ID 6" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 4.69375, 0.2, 0.703645)
 shape = SubResource("BoxShape3D_pn4dk")
@@ -133,6 +135,8 @@ shape = SubResource("BoxShape3D_pn4dk")
 [node name="Blue Reef - ID 22" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -3.88125, 0.2, 0.703645)
 shape = SubResource("BoxShape3D_pn4dk")
+
+[node name="Barge" type="Node" parent="RigidBody3D"]
 
 [node name="Barge Support Middle" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
