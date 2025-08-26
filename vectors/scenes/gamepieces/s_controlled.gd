@@ -1,4 +1,4 @@
-extends Node3D
+extends RigidBody3D
 
 # Defines who is being controlled (in this case, the gamepieces!)
 @export var subject:RigidBody3D

@@ -14,9 +14,18 @@ config/name="vectors"
 run/main_scene="uid://cx2u62i2hp6qu"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[autoload]
+
+XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
+XRToolsRumbleManager="*res://addons/godot-xr-tools/rumble/rumble_manager.gd"
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 
@@ -119,3 +128,8 @@ d_pad_up={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+
+[xr]
+
+openxr/enabled=true
+shaders/enabled=true
