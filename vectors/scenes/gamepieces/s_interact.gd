@@ -17,7 +17,7 @@ func _on_body_entered(body: Node3D) -> void:
 		
 		if body is RigidBody3D:
 			# future algae implementation!
-			if body.name == "Coral" or body.name == "Algae":
+			if body.name.begins_with("Coral") or body.name.begins_with("Algae"):
 				if debug: print("> get " + str(body.name))
 				body.drop()
 				controlled = body

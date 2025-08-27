@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://okd0sabswmfq"]
+[gd_scene load_steps=37 format=3 uid="uid://okd0sabswmfq"]
 
 [ext_resource type="PackedScene" uid="uid://c4fr8kdjrw26t" path="res://assets/robots/yr2025 - frc1778/drivetrain.glb" id="1_1f2gu"]
 [ext_resource type="Script" uid="uid://cobmb6ekmcrs1" path="res://scenes/robots/1778/constants.gd" id="1_sdr17"]
@@ -23,11 +23,10 @@
 [ext_resource type="Script" uid="uid://clf3usst02y41" path="res://scenes/robots/1778/s_arm.gd" id="11_w565x"]
 [ext_resource type="Script" uid="uid://nuy7dwouhxio" path="res://scenes/gamepieces/s_interact.gd" id="15_bkg4a"]
 [ext_resource type="Script" uid="uid://lukb6dme1fuc" path="res://scenes/robots/1778/s_elevator.gd" id="16_gg2tu"]
-[ext_resource type="PackedScene" uid="uid://cfsyoe4u7liwp" path="res://scenes/gamepieces/coral.tscn" id="21_wfe60"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_voqhf"]
 height = 0.709
-radius = 0.05
+radius = 0.07
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wfe60"]
 margin = 0.001
@@ -406,12 +405,6 @@ shape = SubResource("BoxShape3D_3664u")
 
 [node name="drivetrain" parent="Drivetrain" instance=ExtResource("1_1f2gu")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-
-[node name="Coral" parent="." instance=ExtResource("21_wfe60")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.151, 0.057, 0.675)
-
-[node name="Coral2" parent="." instance=ExtResource("21_wfe60")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.151, 0.057, 0.675)
 
 [connection signal="area_entered" from="Drivetrain/GroundIntake/detection" to="Drivetrain/GroundIntake/detection" method="_on_area_entered"]
 [connection signal="body_entered" from="Drivetrain/GroundIntake/detection" to="Drivetrain/GroundIntake/detection" method="_on_body_entered"]
