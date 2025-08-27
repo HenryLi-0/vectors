@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cx2u62i2hp6qu"]
+[gd_scene load_steps=9 format=3 uid="uid://cx2u62i2hp6qu"]
 
 [ext_resource type="PackedScene" uid="uid://rk5fcw6h6i8e" path="res://scenes/field.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://ccfv0baqafufp" path="res://scenes/player.tscn" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://okd0sabswmfq" path="res://scenes/robots/1778/1778Robot.tscn" id="3_tefeu"]
 [ext_resource type="PackedScene" uid="uid://br8wsvxgw8856" path="res://scenes/venue.tscn" id="4_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://dves5borcvcdt" path="res://scenes/audio.tscn" id="5_tipki"]
-[ext_resource type="PackedScene" uid="uid://10pvo44m0jt8" path="res://scenes/gamepieces/algae.tscn" id="6_tefeu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o6xl0"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -53,12 +52,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 0, 0)
 [node name="Venue" parent="." instance=ExtResource("4_o6xl0")]
 
 [node name="Audio" parent="." instance=ExtResource("5_tipki")]
-
-[node name="Algae" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.4, 1.3)
-
-[node name="Algae2" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 0.4, 2)
-
-[node name="Algae3" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3, 0.7, -0.1)
