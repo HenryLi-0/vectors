@@ -2,21 +2,20 @@ extends Node
 
 @onready var drivetrain: RigidBody3D = $"../Drivetrain"
 
-@onready var g_detection: Area3D = $"../Drivetrain/GroundIntake/detection"
-@onready var g_intake: RigidBody3D = $"../Drivetrain/GroundIntake"
-@onready var g_top_rollers: RigidBody3D = $"../Drivetrain/GroundIntake/TopRollers"
-@onready var g_bottom_rollers: RigidBody3D = $"../Drivetrain/GroundIntake/BottomRollers"
-@onready var g_far_left_roller: RigidBody3D = $"../Drivetrain/GroundIntake/FarLeftRoller"
-@onready var g_middle_left_roller: RigidBody3D = $"../Drivetrain/GroundIntake/MiddleLeftRoller"
-@onready var g_middle_right_roller: RigidBody3D = $"../Drivetrain/GroundIntake/MiddleRightRoller"
-@onready var g_far_right_roller: RigidBody3D = $"../Drivetrain/GroundIntake/FarRightRoller"
+@onready var g_detection: Area3D = $"../GroundIntake/detection"
+@onready var g_intake: RigidBody3D = $"../GroundIntake"
+@onready var g_top_rollers: RigidBody3D = $"../GroundIntakeRollers/TopRollers"
+@onready var g_bottom_rollers: RigidBody3D = $"../GroundIntakeRollers/BottomRollers"
+@onready var g_far_left_roller: RigidBody3D = $"../GroundIntakeRollers/FarLeftRoller"
+@onready var g_middle_left_roller: RigidBody3D = $"../GroundIntakeRollers/MiddleLeftRoller"
+@onready var g_middle_right_roller: RigidBody3D = $"../GroundIntakeRollers/MiddleRightRoller"
+@onready var g_far_right_roller: RigidBody3D = $"../GroundIntakeRollers/FarRightRoller"
 
-
-@onready var elevator: RigidBody3D = $"../Drivetrain/ElevatorStageOne"
-@onready var e_arm: RigidBody3D = $"../Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm"
-@onready var e_detection: Area3D = $"../Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/detection"
-@onready var e_back_rollers: RigidBody3D = $"../Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndBackRollers"
-@onready var e_front_rollers: RigidBody3D = $"../Drivetrain/ElevatorStageOne/ElevatorStageTwo/Arm/EndFrontRollers"
+@onready var elevator: Node3D = $"../Elevator"
+@onready var e_arm: RigidBody3D = $"../Arm"
+@onready var e_detection: Area3D = $"../Arm/detection"
+@onready var e_back_rollers: RigidBody3D = $"../EndEffector/EndBackRollers"
+@onready var e_front_rollers: RigidBody3D = $"../EndEffector/EndFrontRollers"
 
 var CONSTANTS = preload("res://scenes/robots/1778/constants.gd")
 var currentState

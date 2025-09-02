@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends Node3D
 
 @export var kStageOneP:float = 6000
 @export var kStageOneI:float = 0
@@ -9,7 +9,7 @@ extends RigidBody3D
 @export var kStageTwoD:float = 3000
 
 var CONSTANTS = preload("res://scenes/robots/1778/constants.gd")
-@onready var stageOne: RigidBody3D = $"."
+@onready var stageOne: RigidBody3D = $ElevatorStageOne
 @onready var stageTwo: RigidBody3D = $ElevatorStageTwo
 
 class PIDController:

@@ -7,17 +7,8 @@ extends RigidBody3D
 @export var rotateY:bool = false
 @export var rotateZ:bool = false
 
-var initPosX:float
-var initPosY:float
-var initPosZ:float
-
 var power:float = 0
 var delta:float = 0
-
-func _ready() -> void:
-	initPosX = position.x
-	initPosY = position.y
-	initPosZ = position.z
 
 '''Sets the power.'''
 func setPower(newPower:float = 1) -> void:
