@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu548vr6s7a36"]
+[gd_scene load_steps=11 format=3 uid="uid://bu548vr6s7a36"]
 
 [ext_resource type="Script" uid="uid://bj4v7unq212t1" path="res://scenes/field/s_reefBranch.gd" id="1_ll7kc"]
 [ext_resource type="PackedScene" uid="uid://cm8fw54l3cpct" path="res://assets/2025 reef pipe.glb" id="2_26e0f"]
@@ -19,31 +19,75 @@ radius = 0.021
 height = 0.308
 radius = 0.021
 
-[node name="ReefBranch" type="RigidBody3D"]
-script = ExtResource("1_ll7kc")
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qplu5"]
+height = 0.176
+radius = 0.03
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dx11b"]
+height = 0.204
+radius = 0.03
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5x3y6"]
+height = 0.308
+radius = 0.03
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kfpc4"]
+height = 0.308
+radius = 0.03
+
+[node name="ReefBranch" type="StaticBody3D"]
 
 [node name="2025 reef pipe" parent="." instance=ExtResource("2_26e0f")]
 
-[node name="L4 Top Bit" type="CollisionShape3D" parent="."]
+[node name="L4 Top Bit Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.254, 1.719, 0)
 shape = SubResource("CylinderShape3D_ll7kc")
 
-[node name="L4 Back Bit" type="CollisionShape3D" parent="."]
+[node name="L4 Back Bit Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0, 0, 1, 0.127, 1.493, 0)
 shape = SubResource("CylinderShape3D_26e0f")
 
-[node name="Reef Pipe Back" type="CollisionShape3D" parent="."]
+[node name="Reef Pipe Back Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.675, 0)
 shape = SubResource("CylinderShape3D_n1had")
 
-[node name="L3" type="CollisionShape3D" parent="."]
+[node name="L3 Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0, 0, 1, 0.127, 1.089, 0)
 shape = SubResource("CylinderShape3D_phnkw")
 
-[node name="L2" type="CollisionShape3D" parent="."]
+[node name="L2 Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0, 0, 1, 0.127, 0.686, 0)
 shape = SubResource("CylinderShape3D_phnkw")
 
-[node name="L4" type="Area3D" parent="."]
+[node name="L4 Area" type="Area3D" parent="."]
 script = ExtResource("1_ll7kc")
-points = 5
+autoPoints = 7
+telePoints = 5
+
+[node name="L4 Top Bit Collision" type="CollisionShape3D" parent="L4 Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.254, 1.719, 0)
+shape = SubResource("CylinderShape3D_qplu5")
+
+[node name="L4 Back Bit Collision" type="CollisionShape3D" parent="L4 Area"]
+transform = Transform3D(0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0, 0, 1, 0.127, 1.493, 0)
+shape = SubResource("CylinderShape3D_dx11b")
+
+[node name="L3 Area" type="Area3D" parent="."]
+script = ExtResource("1_ll7kc")
+autoPoints = 6
+telePoints = 4
+
+[node name="L3 Collision" type="CollisionShape3D" parent="L3 Area"]
+transform = Transform3D(0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0, 0, 1, 0.127, 1.089, 0)
+shape = SubResource("CylinderShape3D_5x3y6")
+
+[node name="L2 Area" type="Area3D" parent="."]
+script = ExtResource("1_ll7kc")
+autoPoints = 4
+telePoints = 3
+
+[node name="L2 Collision" type="CollisionShape3D" parent="L2 Area"]
+transform = Transform3D(0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0, 0, 1, 0.127, 0.686, 0)
+shape = SubResource("CylinderShape3D_kfpc4")
+
+[connection signal="body_entered" from="L4 Area" to="L4 Area" method="_on_body_entered"]
