@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://okd0sabswmfq"]
+[gd_scene load_steps=38 format=3 uid="uid://okd0sabswmfq"]
 
 [ext_resource type="PackedScene" uid="uid://c4fr8kdjrw26t" path="res://assets/robots/yr2025 - frc1778/drivetrain.glb" id="1_1f2gu"]
 [ext_resource type="Script" uid="uid://cobmb6ekmcrs1" path="res://scenes/robots/1778/constants.gd" id="1_sdr17"]
@@ -44,6 +44,10 @@ size = Vector3(0.051, 0.454, 0.051)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kywwa"]
 size = Vector3(0.06, 0.071, 0.291)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bkg4a"]
+height = 0.087
+radius = 0.048
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t12an"]
 height = 0.125
@@ -120,13 +124,7 @@ shape = SubResource("BoxShape3D_fu0ky")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134, 0.482, 0)
 shape = SubResource("BoxShape3D_fu0ky")
 
-[node name="constraint -y" type="Generic6DOFJoint3D" parent="Elevator/ElevatorStageOne"]
-node_a = NodePath("../../../Drivetrain")
-node_b = NodePath("..")
-linear_limit_y/enabled = false
-
-[node name="constraint +y" type="Generic6DOFJoint3D" parent="Elevator/ElevatorStageOne"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.93, 0)
+[node name="constraint" type="Generic6DOFJoint3D" parent="Elevator/ElevatorStageOne"]
 node_a = NodePath("../../../Drivetrain")
 node_b = NodePath("..")
 linear_limit_y/enabled = false
@@ -144,19 +142,13 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.127, 0)
 shape = SubResource("BoxShape3D_tb3rq")
 
-[node name="constraint -y" type="Generic6DOFJoint3D" parent="Elevator/ElevatorStageTwo"]
-node_a = NodePath("../../ElevatorStageOne")
-node_b = NodePath("..")
-linear_limit_y/enabled = false
-
-[node name="constraint +y" type="Generic6DOFJoint3D" parent="Elevator/ElevatorStageTwo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.93, 0)
+[node name="constraint" type="Generic6DOFJoint3D" parent="Elevator/ElevatorStageTwo"]
 node_a = NodePath("../../ElevatorStageOne")
 node_b = NodePath("..")
 linear_limit_y/enabled = false
 
 [node name="Arm" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.222, 0.005)
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0.222, 0.005)
 mass = 2.733
 gravity_scale = 0.0
 center_of_mass_mode = 1
@@ -186,15 +178,21 @@ shape = SubResource("BoxShape3D_sdr17")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.454, 0.178)
 shape = SubResource("BoxShape3D_kywwa")
 
+[node name="spin connection bit" type="CollisionShape3D" parent="Arm"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.044)
+shape = SubResource("CylinderShape3D_bkg4a")
+
 [node name="constraint" type="Generic6DOFJoint3D" parent="Arm"]
 node_a = NodePath("../../Elevator/ElevatorStageTwo")
 node_b = NodePath("..")
 angular_limit_z/enabled = false
 
 [node name="EndEffector" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.063, 0.761, 0.144)
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.336583, 0.647678, 0.144)
 
 [node name="EndBackRollers" type="RigidBody3D" parent="EndEffector"]
+collision_layer = 2
+collision_mask = 2
 mass = 0.156
 gravity_scale = 0.0
 script = ExtResource("11_kywwa")
@@ -217,6 +215,8 @@ node_b = NodePath("..")
 
 [node name="EndFrontRollers" type="RigidBody3D" parent="EndEffector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.182)
+collision_layer = 2
+collision_mask = 2
 mass = 0.156
 gravity_scale = 0.0
 script = ExtResource("11_kywwa")
