@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu548vr6s7a36"]
+[gd_scene load_steps=12 format=3 uid="uid://bu548vr6s7a36"]
 
 [ext_resource type="Script" uid="uid://bj4v7unq212t1" path="res://scenes/field/s_reefBranch.gd" id="1_ll7kc"]
 [ext_resource type="PackedScene" uid="uid://cm8fw54l3cpct" path="res://assets/2025 reef pipe.glb" id="2_26e0f"]
+[ext_resource type="PackedScene" uid="uid://cfsyoe4u7liwp" path="res://scenes/gamepieces/coral.tscn" id="3_26e0f"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ll7kc"]
 height = 0.176
@@ -90,4 +91,12 @@ telePoints = 3
 transform = Transform3D(0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0, 0, 1, 0.127, 0.686, 0)
 shape = SubResource("CylinderShape3D_kfpc4")
 
+[node name="Coral" parent="." instance=ExtResource("3_26e0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.9, 0)
+
+[node name="Coral2" parent="." instance=ExtResource("3_26e0f")]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0.22, 1.16, 0)
+
 [connection signal="body_entered" from="L4 Area" to="L4 Area" method="_on_body_entered"]
+[connection signal="body_entered" from="L3 Area" to="L3 Area" method="_on_body_entered"]
+[connection signal="body_entered" from="L2 Area" to="L2 Area" method="_on_body_entered"]

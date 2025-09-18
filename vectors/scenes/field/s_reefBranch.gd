@@ -11,4 +11,4 @@ func _on_body_entered(body: Node3D) -> void:
 	print(body.name + ": found something")
 	if body is RigidBody3D:
 		if body.name.begins_with("Coral"):
-			print("kachow")
+			print("CORAL SCORED!")
