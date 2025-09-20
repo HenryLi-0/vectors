@@ -27,3 +27,8 @@ func calculate(measurement:float, goal:float, deltaTime:float) -> float:
 	self.lastMeasurement = measurement
 	self.lastError = goal-measurement
 	return value
+	
+func reset(measurement:float) -> void:
+	self.lastMeasurement = measurement
+	self.lastError = 0
+	self.totalError = 0

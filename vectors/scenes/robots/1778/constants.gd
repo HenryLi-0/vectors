@@ -5,8 +5,9 @@ extends Node
 static var DRIVE_MAX_SPEED:float = 3 # m/s
 static var DRIVE_MAX_ACCEL:float = 5 # m/s^2, not implemented yet
 static var DRIVE_MAX_ROT:float = 1 * PI # radians?
-static var DRIVE_FORCE: float = 100000 # ???
-static var TURN_FORCE: float = 800 # ???
+static var DRIVE_FORCE: float = 110000 # ???
+static var DRIVE_FORCE_ADD: float = 0 # ???
+static var TURN_FORCE: float = 80000 # ???
 
 '''ELEVATOR'''
 static var ELEVATOR_MIN_EXTENSION:float = 0.02

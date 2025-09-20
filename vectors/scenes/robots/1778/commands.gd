@@ -90,7 +90,12 @@ func _physics_process(delta: float) -> void:
 		updateState(CONSTANTS.STATE.TRANSFER)
 	if Input.is_action_just_released("d_pad_up"):
 		g_detection.drop()
-			
+	
+	'''AUTO ALIGNING'''
+	if Input.is_action_pressed("bumper_left"):
+		drivetrain.setAuto(0,0,0)
+	if Input.is_action_just_released("bumper_left"):
+		drivetrain.stopAuto()
 		
 		
 
