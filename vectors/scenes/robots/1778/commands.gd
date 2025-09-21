@@ -20,6 +20,9 @@ extends Node
 var CONSTANTS = preload("res://scenes/robots/1778/constants.gd")
 var currentState
 
+# debug
+var temp
+
 func _ready() -> void:
 	currentState = CONSTANTS.STATE.IDLE
 	g_top_rollers.setPower(50)
@@ -93,9 +96,19 @@ func _physics_process(delta: float) -> void:
 	
 	'''AUTO ALIGNING'''
 	if Input.is_action_pressed("bumper_left"):
-		drivetrain.setAuto(0,0,0)
+		drivetrain.setAuto(-5.571,-0.072-0.164*2,0)
 	if Input.is_action_just_released("bumper_left"):
 		drivetrain.stopAuto()
+	if Input.is_action_pressed("bumper_right"):
+		drivetrain.setAuto(-5.571,-0.072,0)
+	if Input.is_action_just_released("bumper_right"):
+		drivetrain.stopAuto()
+		
+	'''DEBUG'''
+	if Input.is_action_just_pressed("summon"):
+		temp = preload("res://scenes/gamepieces/coral.tscn").instantiate()
+		add_child(temp)
+		temp.position = drivetrain.global_position + Vector3(0, 5, 0)
 		
 		
 

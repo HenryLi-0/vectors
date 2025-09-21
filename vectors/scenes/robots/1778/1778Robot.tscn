@@ -25,7 +25,7 @@
 [ext_resource type="Script" uid="uid://lukb6dme1fuc" path="res://scenes/robots/1778/s_elevator.gd" id="16_gg2tu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3664u"]
-size = Vector3(0.9, 0.9, 0.1)
+size = Vector3(0.9, 0.1, 0.9)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t12an"]
 size = Vector3(0.241, 0.025, 0.051)
@@ -84,12 +84,12 @@ unique_name_in_owner = true
 script = ExtResource("1_t12an")
 
 [node name="Drivetrain" type="RigidBody3D" parent="."]
-mass = 36.48
+mass = 52.654
 center_of_mass_mode = 1
 script = ExtResource("2_fu0ky")
 
 [node name="collision" type="CollisionShape3D" parent="Drivetrain"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.05, -2.18557e-09)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -2.18557e-09)
 shape = SubResource("BoxShape3D_3664u")
 
 [node name="drivetrain" parent="Drivetrain" instance=ExtResource("1_1f2gu")]

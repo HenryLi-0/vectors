@@ -12,7 +12,7 @@ var controlled:Node3D
 
 '''Detect when a gamepiece enters and controls it.'''
 func _on_body_entered(body: Node3D) -> void:
-	if active:
+	if active and not(controlling):
 		if debug: print(detectorName + ":")
 		
 		if body is RigidBody3D:

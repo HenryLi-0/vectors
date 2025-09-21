@@ -5,9 +5,10 @@ extends Node
 static var DRIVE_MAX_SPEED:float = 3 # m/s
 static var DRIVE_MAX_ACCEL:float = 5 # m/s^2, not implemented yet
 static var DRIVE_MAX_ROT:float = 1 * PI # radians?
-static var DRIVE_FORCE: float = 110000 # ???
-static var DRIVE_FORCE_ADD: float = 0 # ???
-static var TURN_FORCE: float = 80000 # ???
+static var DRIVE_FORCE: float = 30000 # ???
+static var DRIVE_FORCE_ADD: float = 1500 # ???
+static var TURN_FORCE: float = 25000 # ???
+static var TURN_FORCE_ADD: float = 1000 # ???
 
 '''ELEVATOR'''
 static var ELEVATOR_MIN_EXTENSION:float = 0.02
@@ -42,12 +43,12 @@ enum ELEVATOR_POSITIONS {
 	# inches * 0.0254
 	PreTransfer = 42, # originally 36
 	Transfer = 33,
-	L4Before = 55,
+	L4Before = 56,
 	L4Score = 54,
-	L3Before = 31,
-	L3Score = 28,	
-	L2Before = 15,
-	L2Score = 12,
+	L3Before = 37,
+	L3Score = 34,
+	L2Before = 21,
+	L2Score = 18,
 }
 '''
 Reference:
@@ -60,9 +61,9 @@ enum ARM_POSITIONS {
 	# degrees * PI/180
 	# shift by -1/2 rotations
 	Down = 0,
-	L4ScoreCoral = 135,
+	L4ScoreCoral = 115,
 	L4FinishScoreCoral = 100,
-	AboveScoreCoral = 160,
+	AboveScoreCoral = 115,
 	FinishScoreCoral = 105,	
 }
 static var STATE_POSITIONS = {

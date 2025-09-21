@@ -27,6 +27,7 @@ func do_physics(inDelta:float) -> void:
 	transform = transform.orthonormalized()
 	#rotate_object_local(Vector3(1,0,0), fb * delta)
 	pos += fb * delta
+	pos = clamp(pos, -PI/2, 0.87)
 	rotation.x = pos
 	#apply_torque(global_transform.basis.x * fb * delta)
 	
