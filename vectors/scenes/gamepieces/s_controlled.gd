@@ -22,7 +22,7 @@ func control(object:Node3D):
 	controlledBy = object
 	relativeTransform = object.global_transform.affine_inverse() * subject.global_transform
 	
-	subject.gravity_scale = 0
+	#subject.gravity_scale = 0
 	subject.linear_velocity = Vector3.ZERO
 	subject.angular_velocity = Vector3.ZERO
 
@@ -33,4 +33,4 @@ func override(desiredTransform:Transform3D):
 '''Drops the object from control'''
 func drop():
 	isControlled = false
-	subject.gravity_scale = 1
+	#subject.gravity_scale = 1

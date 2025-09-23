@@ -61,8 +61,8 @@ enum ARM_POSITIONS {
 	# degrees * PI/180
 	# shift by -1/2 rotations
 	Down = 0,
-	L4ScoreCoral = 115,
-	L4FinishScoreCoral = 100,
+	L4ScoreCoral = 118,
+	L4FinishScoreCoral = 108,
 	AboveScoreCoral = 115,
 	FinishScoreCoral = 105,	
 }

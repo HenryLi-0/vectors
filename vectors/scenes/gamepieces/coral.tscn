@@ -13,7 +13,7 @@ radius = 0.051
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ql56e"]
 margin = 0.001
-size = Vector3(0.01, 0.302, 0.025)
+size = Vector3(0.012, 0.302, 0.033)
 
 [node name="Coral" type="RigidBody3D" node_paths=PackedStringArray("subject")]
 collision_layer = 3
