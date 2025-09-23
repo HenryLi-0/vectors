@@ -12,6 +12,6 @@ func _ready() -> void:
 	## above blue reef
 	#right.position = Vector3(-4.45, 4.5, 0.0)
 	#right.rotation = Vector3(-PI/2,-PI/2,0)
-	right.position = Vector3(-5.15, 3.1, -0.15)
+	right.position = Vector3(-5.3, 3.1, 0)
 	right.rotation = Vector3(-PI/2,-PI/2,0)
 		

@@ -25,7 +25,9 @@
 [ext_resource type="Script" uid="uid://lukb6dme1fuc" path="res://scenes/robots/1778/s_elevator.gd" id="16_gg2tu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bkg4a"]
-friction = 0.95
+friction = 0.9
+bounce = 0.2
+absorbent = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3664u"]
 size = Vector3(0.9, 0.1, 0.9)
@@ -132,6 +134,11 @@ shape = SubResource("BoxShape3D_fu0ky")
 node_a = NodePath("../../../Drivetrain")
 node_b = NodePath("..")
 linear_limit_y/enabled = false
+linear_spring_x/enabled = true
+linear_spring_z/enabled = true
+angular_spring_x/enabled = true
+angular_spring_y/enabled = true
+angular_spring_z/enabled = true
 
 [node name="ElevatorStageTwo" type="RigidBody3D" parent="Elevator"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.063, -0.666, -0.169)
@@ -150,6 +157,11 @@ shape = SubResource("BoxShape3D_tb3rq")
 node_a = NodePath("../../ElevatorStageOne")
 node_b = NodePath("..")
 linear_limit_y/enabled = false
+linear_spring_x/enabled = true
+linear_spring_z/enabled = true
+angular_spring_x/enabled = true
+angular_spring_y/enabled = true
+angular_spring_z/enabled = true
 
 [node name="Arm" type="RigidBody3D" parent="."]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0.222, 0.005)
@@ -189,7 +201,13 @@ shape = SubResource("CylinderShape3D_bkg4a")
 [node name="constraint" type="Generic6DOFJoint3D" parent="Arm"]
 node_a = NodePath("../../Elevator/ElevatorStageTwo")
 node_b = NodePath("..")
+linear_spring_x/enabled = true
+linear_spring_y/enabled = true
+linear_spring_z/enabled = true
 angular_limit_z/enabled = false
+angular_spring_x/enabled = true
+angular_spring_y/enabled = true
+angular_spring_z/enabled = true
 
 [node name="EndEffector" type="Node3D" parent="."]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.336583, 0.647678, 0.144)

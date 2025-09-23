@@ -96,13 +96,16 @@ func _physics_process(delta: float) -> void:
 	
 	'''AUTO ALIGNING'''
 	if Input.is_action_pressed("bumper_left"):
-		drivetrain.setAuto(-5.571,-0.072-0.164*2,0)
+		drivetrain.setAuto(-5.60,-0.399,0)
 	if Input.is_action_just_released("bumper_left"):
 		drivetrain.stopAuto()
 	if Input.is_action_pressed("bumper_right"):
-		drivetrain.setAuto(-5.571,-0.072,0)
+		drivetrain.setAuto(-5.60,-0.071,0)
+		#drivetrain.setAuto(-6,0,0)
 	if Input.is_action_just_released("bumper_right"):
 		drivetrain.stopAuto()
+	#print(drivetrain.global_position)
+		
 		
 	'''DEBUG'''
 	if Input.is_action_just_pressed("summon"):
@@ -146,6 +149,10 @@ func _physics_process(delta: float) -> void:
 	e_front_rollers.do_physics(delta)
 	e_back_rollers.do_physics(delta)
 	e_arm.do_physics(delta)
-	
+
 	# drivetrain
-	drivetrain.do_physics(delta)	
+	drivetrain.do_physics(delta)
+	
+	# forced numbers
+	e_arm.rotation.x = drivetrain.rotation.x
+	e_arm.rotation.y = drivetrain.rotation.y
