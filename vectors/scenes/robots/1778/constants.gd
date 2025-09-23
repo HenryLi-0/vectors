@@ -75,9 +75,9 @@ static var STATE_POSITIONS = {
 	STATE.TRANSFER		: [true,	 1,	ELEVATOR_POSITIONS.Transfer,	ARM_POSITIONS.Down,					-1	],
 	STATE.TRAVEL		: [false,	 0,	ELEVATOR_POSITIONS.Transfer,	ARM_POSITIONS.Down,					 0	],
 	STATE.READY_C2 		: [true,	 0,	ELEVATOR_POSITIONS.L2Before,	ARM_POSITIONS.AboveScoreCoral,		 0	],
-	STATE.SCORE_C2 		: [true,	 0,	ELEVATOR_POSITIONS.L2Score,		ARM_POSITIONS.FinishScoreCoral,		 0	],
+	STATE.SCORE_C2 		: [true,	 0,	ELEVATOR_POSITIONS.L2Score,		ARM_POSITIONS.FinishScoreCoral,		 1	],
 	STATE.READY_C3 		: [true,	 0,	ELEVATOR_POSITIONS.L3Before,	ARM_POSITIONS.AboveScoreCoral,		 0	],
-	STATE.SCORE_C3 		: [true,	 0,	ELEVATOR_POSITIONS.L3Score,		ARM_POSITIONS.FinishScoreCoral,		 0	],
+	STATE.SCORE_C3 		: [true,	 0,	ELEVATOR_POSITIONS.L3Score,		ARM_POSITIONS.FinishScoreCoral,		 1	],
 	STATE.READY_C4 		: [true,	 0,	ELEVATOR_POSITIONS.L4Before,	ARM_POSITIONS.L4ScoreCoral,			 0	],
 	STATE.SCORE_C4 		: [true,	 0,	ELEVATOR_POSITIONS.L4Score,		ARM_POSITIONS.L4FinishScoreCoral,	 1	],
 }
@@ -86,3 +86,38 @@ static var READY_SCORE_MAP = {
 	STATE.READY_C3: STATE.SCORE_C3,
 	STATE.READY_C4: STATE.SCORE_C4,
 }
+
+'''
+Reference:
+https://github.com/wpilibsuite/allwpilib/blob/main/apriltag/src/main/native/resources/edu/wpi/first/apriltag/2025-reefscape-welded.csv
+https://firstfrc.blob.core.windows.net/frc2025/FieldAssets/Apriltag_Images_and_User_Guide.pdf
+'''
+static var REEF_TAG_R_OFFSET = 0
+static var REEF_TAG_X_OFFSET = 345.44
+static var REEF_TAG_Z_OFFSET = 158
+static var REEF_TAG_SCALE = 1*2.54/100
+static var REEF_TAGS = [
+	# ID,X,Z,Y,Z-Rotation,X-Rotation
+	#[1,657.37,25.8,58.5,126,0],
+	#[2,657.37,291.2,58.5,234,0],
+	#[3,455.15,317.15,51.25,270,0],
+	#[4,365.2,241.64,73.54,0,30],
+	#[5,365.2,75.39,73.54,0,30],
+	[6,530.49,130.17,12.13,300,0],
+	[7,546.87,158.5,12.13,0,0],
+	[8,530.49,186.83,12.13,60,0],
+	[9,497.77,186.83,12.13,120,0],
+	[10,481.39,158.5,12.13,180,0],
+	[11,497.77,130.17,12.13,240,0],
+	#[12,33.51,25.8,58.5,54,0],
+	#[13,33.51,291.2,58.5,306,0],
+	#[14,325.68,241.64,73.54,180,30],
+	#[15,325.68,75.39,73.54,180,30],
+	#[16,235.73,-0.15,51.25,90,0],
+	[17,160.39,130.17,12.13,240,0],
+	[18,144,158.5,12.13,180,0],
+	[19,160.39,186.83,12.13,120,0],
+	[20,193.1,186.83,12.13,60,0],
+	[21,209.49,158.5,12.13,0,0],
+	[22,193.1,130.17,12.13,300,0],
+]

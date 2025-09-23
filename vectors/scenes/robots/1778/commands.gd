@@ -109,9 +109,17 @@ func _physics_process(delta: float) -> void:
 		
 	'''DEBUG'''
 	if Input.is_action_just_pressed("summon"):
-		temp = preload("res://scenes/gamepieces/coral.tscn").instantiate()
-		add_child(temp)
-		temp.position = drivetrain.global_position + Vector3(0, 5, 0)
+		#temp = preload("res://scenes/gamepieces/coral.tscn").instantiate()
+		#add_child(temp)
+		#temp.position = drivetrain.global_position + Vector3(0, 3, 0)
+		for coral in CONSTANTS.REEF_TAGS:
+			temp = preload("res://scenes/gamepieces/coral.tscn").instantiate()
+			add_child(temp)
+			# ID,X,Z,Y,Z-Rotation,X-Rotation
+			temp.position = Vector3(CONSTANTS.REEF_TAG_SCALE*(coral[1]-CONSTANTS.REEF_TAG_X_OFFSET),
+									CONSTANTS.REEF_TAG_SCALE*(coral[3])+2,
+									CONSTANTS.REEF_TAG_SCALE*(coral[2]-CONSTANTS.REEF_TAG_Z_OFFSET))
+			print(temp.position)
 		
 		
 
