@@ -27,6 +27,8 @@ func do_physics(inDelta: float) -> void:
 		c_rotation = Input.get_axis("turn_neg", "turn_pos")
 	else:
 		c_translation = Vector2(pidZ.calculate(global_position.z, targetZ, delta), pidX.calculate(global_position.x, targetX, delta))
+		if abs(global_rotation.y - targetO) > PI: # to fix wrapping leading to infinite spin
+			targetO += 2 * PI if global_rotation.y > targetO else -2 * PI
 		c_rotation = pidO.calculate(global_rotation.y, targetO, delta)
 		#print(c_translation)
 		#print("x: " + str(position.x) + " " + str(targetX))

@@ -316,7 +316,8 @@ shape = SubResource("BoxShape3D_voqhf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0, 0)
 node_a = NodePath("../../Drivetrain")
 node_b = NodePath("..")
-angular_limit_x/enabled = false
+angular_limit_x/upper_angle = -1.5708
+angular_limit_x/lower_angle = 0.872665
 
 [node name="GroundIntakeRollers" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -1.06581e-14, 0, 1.06581e-14, 1, 0.355, 0.364, 0.564)

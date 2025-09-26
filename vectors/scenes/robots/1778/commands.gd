@@ -112,10 +112,15 @@ func _physics_process(delta: float) -> void:
 		var translate:Vector2 # xz
 		if Input.is_action_pressed("bumper_left"):	translate = Vector2(-0.483424, -0.4117)
 		if Input.is_action_pressed("bumper_right"):	translate = Vector2(-0.483424, -0.0837)
-		translate = translate.rotated(deg_to_rad(minTag[4] - 180)) + minTagPosition
-		drivetrain.setAuto(translate.x, translate.y, deg_to_rad(minTag[4] - 180))
-		print("TARGET: ", translate, deg_to_rad(minTag[4] - 180))
+		translate = translate.rotated(deg_to_rad(minTag[4] + 180)) + minTagPosition
+		drivetrain.setAuto(translate.x, translate.y, deg_to_rad(180 - minTag[4]))
+		print("TARGET: ", translate, deg_to_rad(180 - minTag[4]))
 		print("POSITION: ", drivetrain.global_position, drivetrain.global_rotation.y)
+		
+		#temp = preload("res://scenes/gamepieces/coral.tscn").instantiate()
+		#add_child(temp)
+		#temp.position = Vector3(translate.x, 2, translate.y)
+
 	if Input.is_action_just_released("bumper_left") or Input.is_action_just_released("bumper_right"):
 		drivetrain.stopAuto()
 		
