@@ -16,7 +16,6 @@ extends Node
 @onready var e_detection: Area3D = $"../Arm/detection"
 @onready var e_back_rollers: RigidBody3D = $"../EndEffector/EndBackRollers"
 @onready var e_front_rollers: RigidBody3D = $"../EndEffector/EndFrontRollers"
-
 var CONSTANTS = preload("res://scenes/robots/1778/constants.gd")
 var currentState
 
@@ -95,15 +94,43 @@ func _physics_process(delta: float) -> void:
 		g_detection.drop()
 	
 	'''AUTO ALIGNING'''
-	if Input.is_action_pressed("bumper_left"):
-		drivetrain.setAuto(-5.60,-0.399,0)
-	if Input.is_action_just_released("bumper_left"):
+	if Input.is_action_pressed("bumper_left") or Input.is_action_pressed("bumper_right"):
+		var min = 99999
+		var minTag
+		var minTagPosition:Vector2
+		for tag in CONSTANTS.REEF_TAGS:
+			temp = Vector3(CONSTANTS.REEF_TAG_SCALE*(tag[1]-CONSTANTS.REEF_TAG_X_OFFSET),
+					   CONSTANTS.REEF_TAG_SCALE*(tag[3])+2,
+					   CONSTANTS.REEF_TAG_SCALE*(tag[2]-CONSTANTS.REEF_TAG_Z_OFFSET))
+			if min > temp.distance_to(drivetrain.global_position):
+				min = temp.distance_to(drivetrain.global_position)
+				minTag = tag
+				minTagPosition = Vector2(temp.x, temp.z)
+			# tag 18
+			# -5.116576
+			# 0.0127
+		var translate:Vector2 # xz
+		if Input.is_action_pressed("bumper_left"):	translate = Vector2(-0.483424, -0.4117)
+		if Input.is_action_pressed("bumper_right"):	translate = Vector2(-0.483424, -0.0837)
+		translate = translate.rotated(deg_to_rad(minTag[4] - 180)) + minTagPosition
+		drivetrain.setAuto(translate.x, translate.y, deg_to_rad(minTag[4] - 180))
+		print("TARGET: ", translate, deg_to_rad(minTag[4] - 180))
+		print("POSITION: ", drivetrain.global_position, drivetrain.global_rotation.y)
+	if Input.is_action_just_released("bumper_left") or Input.is_action_just_released("bumper_right"):
 		drivetrain.stopAuto()
-	if Input.is_action_pressed("bumper_right"):
-		drivetrain.setAuto(-5.60,-0.071,0)
-		#drivetrain.setAuto(-6,0,0)
-	if Input.is_action_just_released("bumper_right"):
-		drivetrain.stopAuto()
+		
+
+		
+	
+	#if Input.is_action_pressed("bumper_left"):
+		#drivetrain.setAuto(-5.60,-0.399,0)
+	#if Input.is_action_just_released("bumper_left"):
+		#drivetrain.stopAuto()
+	#if Input.is_action_pressed("bumper_right"):
+		#drivetrain.setAuto(-5.60,-0.071,0)
+		##drivetrain.setAuto(-6,0,0)
+	#if Input.is_action_just_released("bumper_right"):
+		#drivetrain.stopAuto()
 	#print(drivetrain.global_position)
 		
 		
