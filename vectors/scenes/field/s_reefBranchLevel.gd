@@ -8,9 +8,6 @@ extends Area3D
 var scored:bool = false
 var scoredName:String = ""
 
-func _ready() -> void:
-	name = "REEF_BRANCH"
-
 func _on_body_entered(body: Node3D) -> void:
 	if debug: print(body.name + ": body entered")
 	if body is RigidBody3D:
@@ -28,3 +25,9 @@ func _on_body_exited(body: Node3D) -> void:
 
 func getCoral() -> bool:
 	return scored
+
+func getPoints() -> int:
+	# TODO implement auto point bonus
+	if scored:
+		return telePoints
+	return 0

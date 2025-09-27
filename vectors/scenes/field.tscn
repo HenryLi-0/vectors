@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://rk5fcw6h6i8e"]
+[gd_scene load_steps=11 format=3 uid="uid://rk5fcw6h6i8e"]
 
 [ext_resource type="PackedScene" uid="uid://drp581c36yf14" path="res://assets/2025 reefscape field.glb" id="1_6pmjc"]
+[ext_resource type="Script" uid="uid://ce4l6u8glv5nk" path="res://scripts/fms.gd" id="1_7156t"]
 [ext_resource type="PackedScene" uid="uid://cfsyoe4u7liwp" path="res://scenes/gamepieces/coral.tscn" id="2_ttalb"]
 [ext_resource type="PackedScene" uid="uid://bu548vr6s7a36" path="res://scenes/field/reefBranch.tscn" id="3_lptdg"]
 
@@ -23,6 +24,7 @@ size = Vector3(0.05, 0.5, 0.95)
 size = Vector3(0.3, 2, 0.3)
 
 [node name="Field" type="StaticBody3D"]
+script = ExtResource("1_7156t")
 
 [node name="2025 reefscape field" parent="." instance=ExtResource("1_6pmjc")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 2.6077e-07)

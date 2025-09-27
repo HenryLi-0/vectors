@@ -106,9 +106,7 @@ func _physics_process(delta: float) -> void:
 				min = temp.distance_to(drivetrain.global_position)
 				minTag = tag
 				minTagPosition = Vector2(temp.x, temp.z)
-			# tag 18
-			# -5.116576
-			# 0.0127
+			# tag 18 -5.116576, 0.0127
 		var translate:Vector2 # xz
 		if Input.is_action_pressed("bumper_left"):	translate = Vector2(-0.483424, -0.4117)
 		if Input.is_action_pressed("bumper_right"):	translate = Vector2(-0.483424, -0.0837)

@@ -22,9 +22,9 @@ func do_physics(inDelta:float) -> void:
 	if abs(rotation.x - pos) > PI/2:
 		pos = rotation.x
 	var fb = pidController.calculate(pos, goal, delta)
-	print("goal is " + str(goal))
-	print("power is " + str(fb))
-	print("position is " + str(pos))
+	#print("goal is " + str(goal))
+	#print("power is " + str(fb))
+	#print("position is " + str(pos))
 	
 	#transform = transform.orthonormalized()
 	rotate_object_local(Vector3(1,0,0), fb * delta)

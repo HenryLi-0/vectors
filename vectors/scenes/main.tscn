@@ -18,7 +18,6 @@ background_mode = 2
 sky = SubResource("Sky_tipki")
 tonemap_mode = 2
 glow_enabled = true
-volumetric_fog_enabled = true
 
 [node name="Main" type="Node3D"]
 
