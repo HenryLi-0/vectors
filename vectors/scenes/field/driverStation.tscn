@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhntcvfsqowh8"]
+
+[ext_resource type="Script" uid="uid://bni8sc33l44ye" path="res://scenes/field/s_driverstation.gd" id="1_xw781"]
+
+[node name="DriverStation" type="Node3D"]
+script = ExtResource("1_xw781")
+
+[node name="Driver Station Frame" type="CSGBox3D" parent="."]
+size = Vector3(0.044, 1.095, 1.822)
+
+[node name="Driver Station Hole" type="CSGBox3D" parent="Driver Station Frame"]
+operation = 2
+size = Vector3(0.044, 1.006, 1.733)
+
+[node name="Red Score" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.49691e-08, 0.45, 0.8)
+pixel_size = 0.002
+modulate = Color(0.88, 0.2992, 0.2992, 1)
+text = "Red Score
+"
+outline_size = 10
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="Blue Score" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.49691e-08, 0.45, -0.8)
+pixel_size = 0.002
+modulate = Color(0.2992, 0.5412, 0.88, 1)
+text = "Blue Score
+"
+outline_size = 10
+horizontal_alignment = 2
+vertical_alignment = 0
+
+[node name="Timer" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.10543e-15, 0.45, 7.45058e-08)
+pixel_size = 0.002
+text = "Time"
+outline_size = 10
+vertical_alignment = 0
+
+[node name="DS Text" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.49691e-08, -0.45, 0.8)
+pixel_size = 0.0007
+modulate = Color(0.1, 1, 0, 1)
+text = "DS TEXT"
+outline_size = 10
+horizontal_alignment = 0
+vertical_alignment = 2
