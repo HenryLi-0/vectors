@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+@onready var audio: AudioStreamPlayer3D = $Audio
+var audioRNG:RandomNumberGenerator = RandomNumberGenerator.new()
 var CONSTANTS = preload("res://scenes/robots/1778/constants.gd")
 
 var force:Vector3
@@ -17,6 +19,14 @@ var pidO:PIDController = PIDController.new(0.1, 0.03, 0.17) # rotate
 '''Controls'''
 var c_translation:Vector2 = Vector2(0,0)
 var c_rotation:float = 0
+
+func _process(delta: float) -> void:
+	pass
+	#if not(audio.playing):
+		##audio.stream = load("res://assets/audio/drive" + str(audioRNG.randi_range(1,3)) + ".wav")
+		#audio.play()
+		#print("playing")
+	
 
 '''Process physics.'''
 func do_physics(inDelta: float) -> void:

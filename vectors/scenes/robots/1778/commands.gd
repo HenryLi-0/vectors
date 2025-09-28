@@ -17,7 +17,6 @@ extends Node
 @onready var e_back_rollers: RigidBody3D = $"../EndEffector/EndBackRollers"
 @onready var e_front_rollers: RigidBody3D = $"../EndEffector/EndFrontRollers"
 
-@onready var audio: AudioStreamPlayer3D = $"../Audio"
 var CONSTANTS = preload("res://scenes/robots/1778/constants.gd")
 var currentState
 
@@ -124,21 +123,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("bumper_left") or Input.is_action_just_released("bumper_right"):
 		drivetrain.stopAuto()
 		
-
-		
-	
-	#if Input.is_action_pressed("bumper_left"):
-		#drivetrain.setAuto(-5.60,-0.399,0)
-	#if Input.is_action_just_released("bumper_left"):
-		#drivetrain.stopAuto()
-	#if Input.is_action_pressed("bumper_right"):
-		#drivetrain.setAuto(-5.60,-0.071,0)
-		##drivetrain.setAuto(-6,0,0)
-	#if Input.is_action_just_released("bumper_right"):
-		#drivetrain.stopAuto()
-	#print(drivetrain.global_position)
-		
-		
 	'''DEBUG'''
 	if Input.is_action_just_pressed("summon"):
 		#temp = preload("res://scenes/gamepieces/coral.tscn").instantiate()
@@ -152,27 +136,6 @@ func _physics_process(delta: float) -> void:
 									CONSTANTS.REEF_TAG_SCALE*(coral[3])+2,
 									CONSTANTS.REEF_TAG_SCALE*(coral[2]-CONSTANTS.REEF_TAG_Z_OFFSET))
 			print(temp.position)
-		
-		
-
-
-
-	#print(g_top_rollers.rotation.x)
-	#g_far_left_roller.setPower(10)
-	#if Input.is_action_pressed("test"):
-		##g_intake.setGoal(0.87)
-		##g_intake.setGoal(PI - 2.325886)
-		##e_back_rollers.setPower(-1)
-		#elevator.setGoalPosition(CONSTANTS.ELEVATOR_POSITIONS.L4Before * 0.0254/1.5)
-		#e_arm.setGoal(CONSTANTS.ARM_POSITIONS.L4ScoreCoral * PI/180 - PI)
-	#else:
-		#elevator.setGoalPercent(0)
-		##g_intake.setGoal(-PI/2)
-		#elevator.setGoalPosition(CONSTANTS.ELEVATOR_POSITIONS.L4Score * 0.0254/1.5)
-		#e_arm.setGoal(CONSTANTS.ARM_POSITIONS.L4FinishScoreCoral * PI/180 - PI)
-#
-#
-
 
 	'''physics stuff'''
 	# ground intake physics

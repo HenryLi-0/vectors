@@ -20,13 +20,14 @@ size_flags_vertical = 3
 
 [node name="LeftSubViewport" type="SubViewport" parent="GridContainer/LeftSubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(600, 600)
+size = Vector2i(1200, 600)
 render_target_update_mode = 4
 
 [node name="left" type="Camera3D" parent="GridContainer/LeftSubViewportContainer/LeftSubViewport"]
 current = true
 
 [node name="RightSubViewportContainer" type="SubViewportContainer" parent="GridContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -34,7 +35,8 @@ size_flags_vertical = 3
 [node name="RightSubViewport" type="SubViewport" parent="GridContainer/RightSubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(600, 600)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="right" type="Camera3D" parent="GridContainer/RightSubViewportContainer/RightSubViewport"]
+visible = false
 current = true
