@@ -1,0 +1,18 @@
+<script>
+    const socket = new WebSocket("ws://192.168.1.52:1155")
+
+    socket.onopen = () => {
+        console.log("js sucks, connected to godot though")
+        setInterval(() => {
+            const odometry = {
+                "data" : Math.random()
+            };
+            socket.send(JSON.stringify(odometry));
+        }, 50); // js silly
+    };
+
+    socket.onerror = (e) => {console.log(
+        "Websocket error womp womp", e
+    )};
+    // so many lambdas smh
+</script>
