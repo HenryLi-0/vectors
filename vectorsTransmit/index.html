@@ -1,18 +1,90 @@
-<script>
-    const socket = new WebSocket("ws://192.168.1.52:1155")
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vectors Phone Odometry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        } .data {
+            font-size: 20px;
+        }
+        #startButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vectors Phone Odometry</h1>
+    <p>Sends phone odometry to control direction in Vectors</p>
+    
+    <button id="startButton">Motion Access</button>
 
-    socket.onopen = () => {
-        console.log("js sucks, connected to godot though")
-        setInterval(() => {
-            const odometry = {
-                "data" : Math.random()
-            };
-            socket.send(JSON.stringify(odometry));
-        }, 50); // js silly
-    };
+    <div class="data">
+        <p> Alpha: <span id="alpha">0<span>*</p>
+        <p> Beta: <span id="beta">0<span>*</p>
+        <p> Gamma: <span id="gamma">0<span>*</p>
+    </div>
 
-    socket.onerror = (e) => {console.log(
-        "Websocket error womp womp", e
-    )};
-    // so many lambdas smh
-</script>
+    <script>
+        const startButton = document.getElementById("startButton");
+        const socket = new WebSocket("wss://192.168.1.52:1155");
+        var ready = false;
+
+        socket.onopen = () => {
+            console.log("connected to godot");
+            ready = true;
+        };
+        
+        socket.onerror = (e) => {console.log(
+            // so many lambdas smh
+            "websocket error womp womp", e
+        )};
+        
+        function odometry(event) {
+            const alpha = event.alpha;
+            const beta = event.beta;
+            const gamma = event.gamma;
+            
+            document.getElementById("alpha").textContent = alpha?.toFixed(2);
+            document.getElementById("beta").textContent = beta?.toFixed(2);
+            document.getElementById("gamma").textContent = gamma?.toFixed(2);
+            
+            if (ready) {
+                const odometry = {
+                    "data": Math.random()
+                    // "alpha": event.alpha,
+                    // "beta": event.beta,
+                    // "gamma": event.gamma,
+                }
+                socket.send(JSON.stringify(odometry));
+            }
+        }
+
+        startButton.addEventListener("click", function () {
+            // ios 13+ need permission or something
+            if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function") {
+                DeviceOrientationEvent.requestPermission().then(
+                    reponse => {
+                        if (response === "granted") {
+                            window.addEventListener("odometry", odometry, false);
+                            startButton.style.display = "none";
+                        } else {
+                            alert("permission denied for device orientation!");
+                        }
+                    }
+                )
+            } else {
+                // not ios
+                window.addEventListener("odometry", odometry, false);
+                startButton.style.display = "none";
+            }
+        })
+    </script>
+</body>
+</html>
