@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://okd0sabswmfq"]
+[gd_scene load_steps=40 format=3 uid="uid://okd0sabswmfq"]
 
 [ext_resource type="PackedScene" uid="uid://c4fr8kdjrw26t" path="res://assets/robots/yr2025 - frc1778/drivetrain.glb" id="1_1f2gu"]
 [ext_resource type="Script" uid="uid://cobmb6ekmcrs1" path="res://scenes/robots/1778/constants.gd" id="1_sdr17"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bsbkbbhq4wg2r" path="res://assets/robots/yr2025 - frc1778/ground-intake-top-rollers.glb" id="3_ijgdu"]
 [ext_resource type="PackedScene" uid="uid://dh8ifm53njsx6" path="res://assets/robots/yr2025 - frc1778/elevator-stage-1.glb" id="3_sd3rr"]
 [ext_resource type="PackedScene" uid="uid://d0pvhewegyyfb" path="res://assets/robots/yr2025 - frc1778/ground-intake-bottom-rollers.glb" id="4_cqhly"]
+[ext_resource type="AudioStream" uid="uid://bengxpw2mxwfo" path="res://assets/audio/drive1.wav" id="4_gg2tu"]
 [ext_resource type="Script" uid="uid://cgr4f8d2ygi0w" path="res://scenes/robots/1778/s_ground_intake.gd" id="4_gjlni"]
 [ext_resource type="PackedScene" uid="uid://68o4kr2s6im1" path="res://assets/robots/yr2025 - frc1778/elevator-stage-2.glb" id="4_wjhki"]
 [ext_resource type="PackedScene" uid="uid://b1fb0hldhlqw0" path="res://assets/robots/yr2025 - frc1778/arm.glb" id="5_ijgdu"]
@@ -87,6 +88,10 @@ script = ExtResource("1_sdr17")
 [node name="Commands" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_t12an")
+
+[node name="Audio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_gg2tu")
+bus = &"Robot"
 
 [node name="Drivetrain" type="RigidBody3D" parent="."]
 mass = 52.654

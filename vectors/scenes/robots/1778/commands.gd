@@ -16,6 +16,8 @@ extends Node
 @onready var e_detection: Area3D = $"../Arm/detection"
 @onready var e_back_rollers: RigidBody3D = $"../EndEffector/EndBackRollers"
 @onready var e_front_rollers: RigidBody3D = $"../EndEffector/EndFrontRollers"
+
+@onready var audio: AudioStreamPlayer3D = $"../Audio"
 var CONSTANTS = preload("res://scenes/robots/1778/constants.gd")
 var currentState
 
