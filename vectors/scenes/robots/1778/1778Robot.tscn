@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://okd0sabswmfq"]
+[gd_scene load_steps=41 format=3 uid="uid://okd0sabswmfq"]
 
 [ext_resource type="PackedScene" uid="uid://c4fr8kdjrw26t" path="res://assets/robots/yr2025 - frc1778/drivetrain.glb" id="1_1f2gu"]
 [ext_resource type="Script" uid="uid://cobmb6ekmcrs1" path="res://scenes/robots/1778/constants.gd" id="1_sdr17"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://clf3usst02y41" path="res://scenes/robots/1778/s_arm.gd" id="11_w565x"]
 [ext_resource type="Script" uid="uid://nuy7dwouhxio" path="res://scenes/gamepieces/s_interact.gd" id="15_bkg4a"]
 [ext_resource type="Script" uid="uid://lukb6dme1fuc" path="res://scenes/robots/1778/s_elevator.gd" id="16_gg2tu"]
+[ext_resource type="AudioStream" uid="uid://bdo3lp3q54gp3" path="res://assets/audio/stall1.wav" id="19_gqxh2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bkg4a"]
 friction = 0.9
@@ -102,13 +103,9 @@ shape = SubResource("BoxShape3D_3664u")
 [node name="drivetrain" parent="Drivetrain" instance=ExtResource("1_1f2gu")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
-[node name="Audio" type="AudioStreamPlayer3D" parent="Drivetrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -2.18557e-09)
+[node name="Audio" type="AudioStreamPlayer2D" parent="Drivetrain"]
 stream = ExtResource("6_gg2tu")
-attenuation_model = 3
-volume_db = 80.0
 autoplay = true
-bus = &"Robot"
 
 [node name="Elevator" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.063, 0.761, 0.144)
@@ -327,6 +324,11 @@ node_a = NodePath("../../Drivetrain")
 node_b = NodePath("..")
 angular_limit_x/upper_angle = -1.5708
 angular_limit_x/lower_angle = 0.872665
+
+[node name="StallAudio" type="AudioStreamPlayer2D" parent="GroundIntake"]
+stream = ExtResource("19_gqxh2")
+
+[node name="IntakeAudio" type="AudioStreamPlayer2D" parent="GroundIntake"]
 
 [node name="GroundIntakeRollers" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -1.06581e-14, 0, 1.06581e-14, 1, 0.355, 0.364, 0.564)

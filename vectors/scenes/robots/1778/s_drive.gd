@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-@onready var audio: AudioStreamPlayer3D = $Audio
+@onready var audio: AudioStreamPlayer2D = $Audio
 var audioRNG:RandomNumberGenerator = RandomNumberGenerator.new()
 var CONSTANTS = preload("res://scenes/robots/1778/constants.gd")
 
@@ -21,11 +21,10 @@ var c_translation:Vector2 = Vector2(0,0)
 var c_rotation:float = 0
 
 func _process(delta: float) -> void:
-	pass
-	#if not(audio.playing):
-		##audio.stream = load("res://assets/audio/drive" + str(audioRNG.randi_range(1,3)) + ".wav")
-		#audio.play()
-		#print("playing")
+	audio.volume_linear = sqrt(linear_velocity.x**2 + linear_velocity.y**2 + linear_velocity.z**2)/CONSTANTS.DRIVE_MAX_SPEED
+	if not(audio.playing):
+		#audio.stream = load("res://assets/audio/drive" + str(audioRNG.randi_range(1,3)) + ".wav")
+		audio.play()
 	
 
 '''Process physics.'''

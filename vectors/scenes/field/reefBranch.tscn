@@ -131,6 +131,8 @@ telePoints = 3
 transform = Transform3D(0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0, 0, 1, 0.127, 0.686, 0)
 shape = SubResource("CylinderShape3D_kfpc4")
 
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="body_entered" from="L4 Area" to="L4 Area" method="_on_body_entered"]
 [connection signal="body_exited" from="L4 Area" to="L4 Area" method="_on_body_exited"]
 [connection signal="body_entered" from="L3 Area" to="L3 Area" method="_on_body_entered"]
