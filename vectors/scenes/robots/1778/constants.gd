@@ -1,10 +1,13 @@
 extends Node
 
+'''RELEASE'''
+static var VERSION:String = "v0.1"
+
 '''DRIVETRAIN'''
 # max speed/accel/rot not accurate yet
 static var DRIVE_MAX_SPEED:float = 2 # m/s
 static var DRIVE_MAX_ACCEL:float = 5 # m/s^2, not implemented yet
-static var DRIVE_MAX_ROT:float = 1 * PI # radians?
+static var DRIVE_MAX_ROT:float = 0.5 * PI # radians?
 static var DRIVE_FORCE: float = 40000 # ???
 static var DRIVE_FORCE_ADD: float = 3000 # ???
 static var TURN_FORCE: float = 25000 # ???
@@ -34,21 +37,21 @@ enum STATE {
 	#PROCESSOR,		# arm side, elevator down, processor
 	}
 '''
-Reference
+Reference:
 https://github.com/FIRST1778/2025-Robot-Code-Public/blob/main/src/main/java/org/chillout1778/subsystems/Elevator.kt#L23
 '''
 static var ELEVATOR_CONVERSION:float = 0.0254/2
 enum ELEVATOR_POSITIONS {
 	# UNITS ARE IN INCHES, CONVERT TO METERS!
 	# inches * 0.0254
-	PreTransfer = 42, # originally 36
+	PreTransfer = 42,
 	Transfer = 33,
 	L4Before = 56,
 	L4Score = 53,
 	L3Before = 38,
 	L3Score = 34,
 	L2Before = 21,
-	L2Score = 19,
+	L2Score = 17,
 }
 '''
 Reference:

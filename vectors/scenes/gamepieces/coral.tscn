@@ -31,49 +31,49 @@ disabled = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
 [node name="Outside +x" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.054, 0.151, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.058, 0.151, 0)
 shape = SubResource("BoxShape3D_ql56e")
 
 [node name="Outside -x" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.054, 0.151, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.058, 0.151, 0)
 shape = SubResource("BoxShape3D_ql56e")
 
 [node name="Outside +z" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.151, 0.054)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.151, 0.058)
 shape = SubResource("BoxShape3D_ql56e")
 
 [node name="Outside -z" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.151, -0.054)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.151, -0.058)
 shape = SubResource("BoxShape3D_ql56e")
 
 [node name="Outside +x2" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0.0467654, 0.151, 0.027)
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0.0502295, 0.151, 0.029)
 shape = SubResource("BoxShape3D_ql56e")
 
 [node name="Outside -x2" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -0.0467654, 0.151, -0.027)
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -0.0502295, 0.151, -0.029)
 shape = SubResource("BoxShape3D_ql56e")
 
 [node name="Outside +z2" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -0.027, 0.151, 0.0467654)
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -0.029, 0.151, 0.0502295)
 shape = SubResource("BoxShape3D_ql56e")
 
 [node name="Outside -z2" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0.027, 0.151, -0.0467654)
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0.029, 0.151, -0.0502295)
 shape = SubResource("BoxShape3D_ql56e")
 
 [node name="Outside +x3" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0.027, 0.151, 0.0467654)
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0.029, 0.151, 0.0502295)
 shape = SubResource("BoxShape3D_ql56e")
 
 [node name="Outside -x3" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -0.027, 0.151, -0.0467654)
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -0.029, 0.151, -0.0502295)
 shape = SubResource("BoxShape3D_ql56e")
 
 [node name="Outside +z3" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -0.0467654, 0.151, 0.027)
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -0.0502295, 0.151, 0.029)
 shape = SubResource("BoxShape3D_ql56e")
 
 [node name="Outside -z3" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0.0467654, 0.151, -0.027)
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0.0502295, 0.151, -0.029)
 shape = SubResource("BoxShape3D_ql56e")

@@ -22,7 +22,7 @@ func setGoal(newGoal:float = 0) -> void:
 	
 func _process(delta: float) -> void:
 	'''intake noises'''
-	intakeAudio.volume_linear = 1 if (pos > 0.5 and not(detection.controlling)) else 0
+	intakeAudio.volume_linear = 1 if (pos > 0 and not(detection.controlling)) else 0
 	if not(intakeAudio.playing):
 		intakeAudio.stream = load("res://assets/audio/intake" + str(audioRNG.randi_range(1,3)) + ".wav")
 		intakeAudio.play()

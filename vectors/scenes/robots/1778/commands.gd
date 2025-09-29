@@ -18,10 +18,10 @@ extends Node
 @onready var e_front_rollers: RigidBody3D = $"../EndEffector/EndFrontRollers"
 
 var CONSTANTS = preload("res://scenes/robots/1778/constants.gd")
-var currentState
-
-# debug
+var currentState = CONSTANTS.STATE.IDLE
+var rng:RandomNumberGenerator = RandomNumberGenerator.new()
 var temp
+var moved = false
 
 func _ready() -> void:
 	currentState = CONSTANTS.STATE.IDLE
@@ -34,7 +34,9 @@ func _ready() -> void:
 	#g_far_right_roller.setPower(10)
 
 func _process(delta: float) -> void:
-	pass
+	if not(moved):
+		if currentState != CONSTANTS.STATE.IDLE:
+			moved = true
 
 func updateState(state) -> void:
 	currentState = state
@@ -113,8 +115,8 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("bumper_right"):	translate = Vector2(-0.483424, -0.0837)
 		translate = translate.rotated(deg_to_rad(minTag[4] + 180)) + minTagPosition
 		drivetrain.setAuto(translate.x, translate.y, deg_to_rad(180 - minTag[4]))
-		print("TARGET: ", translate, deg_to_rad(180 - minTag[4]))
-		print("POSITION: ", drivetrain.global_position, drivetrain.global_rotation.y)
+		#print("TARGET: ", translate, deg_to_rad(180 - minTag[4]))
+		#print("POSITION: ", drivetrain.global_position, drivetrain.global_rotation.y)
 		
 		#temp = preload("res://scenes/gamepieces/coral.tscn").instantiate()
 		#add_child(temp)
@@ -125,17 +127,21 @@ func _physics_process(delta: float) -> void:
 		
 	'''DEBUG'''
 	if Input.is_action_just_pressed("summon"):
-		#temp = preload("res://scenes/gamepieces/coral.tscn").instantiate()
-		#add_child(temp)
-		#temp.position = drivetrain.global_position + Vector3(0, 3, 0)
-		for coral in CONSTANTS.REEF_TAGS:
-			temp = preload("res://scenes/gamepieces/coral.tscn").instantiate()
-			add_child(temp)
-			# ID,X,Z,Y,Z-Rotation,X-Rotation
-			temp.position = Vector3(CONSTANTS.REEF_TAG_SCALE*(coral[1]-CONSTANTS.REEF_TAG_X_OFFSET),
-									CONSTANTS.REEF_TAG_SCALE*(coral[3])+2,
-									CONSTANTS.REEF_TAG_SCALE*(coral[2]-CONSTANTS.REEF_TAG_Z_OFFSET))
-			print(temp.position)
+		temp = preload("res://scenes/gamepieces/coral.tscn").instantiate()
+		add_child(temp)
+		temp.position = Vector3(-7, 1, 2 if drivetrain.global_position.z > 0 else -2)
+		temp.rotation = Vector3(rng.randf()*2*PI, rng.randf()*2*PI, rng.randf()*2*PI)
+		##temp = preload("res://scenes/gamepieces/coral.tscn").instantiate()
+		##add_child(temp)
+		##temp.position = drivetrain.global_position + Vector3(0, 3, 0)
+		#for coral in CONSTANTS.REEF_TAGS:
+			#temp = preload("res://scenes/gamepieces/coral.tscn").instantiate()
+			#add_child(temp)
+			## ID,X,Z,Y,Z-Rotation,X-Rotation
+			#temp.position = Vector3(CONSTANTS.REEF_TAG_SCALE*(coral[1]-CONSTANTS.REEF_TAG_X_OFFSET),
+									#CONSTANTS.REEF_TAG_SCALE*(coral[3])+2,
+									#CONSTANTS.REEF_TAG_SCALE*(coral[2]-CONSTANTS.REEF_TAG_Z_OFFSET))
+			#print(temp.position)
 
 	'''physics stuff'''
 	# ground intake physics

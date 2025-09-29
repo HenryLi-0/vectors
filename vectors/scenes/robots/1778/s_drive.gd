@@ -11,6 +11,7 @@ var automation:bool = false
 var targetX:float = 0
 var targetZ:float = 0
 var targetO:float = 0
+var targetError:float = 0
 
 var pidX:PIDController = PIDController.new(0.007, 0.005, 0.08) # translate x
 var pidZ:PIDController = PIDController.new(0.007, 0.005, 0.08) # translate z
@@ -25,7 +26,6 @@ func _process(delta: float) -> void:
 	if not(audio.playing):
 		#audio.stream = load("res://assets/audio/drive" + str(audioRNG.randi_range(1,3)) + ".wav")
 		audio.play()
-	
 
 '''Process physics.'''
 func do_physics(inDelta: float) -> void:
@@ -44,7 +44,8 @@ func do_physics(inDelta: float) -> void:
 		#print("z: " + str(position.z) + " " + str(targetZ))
 		#print("(" + str(c_rotation) + ")")
 		#print("o: " + str(rotation.y) + " " + str(targetO))
-		print("distance error: " + str(sqrt((global_position.x-targetX)**2 + (global_position.z-targetZ)**2)))
+		targetError = sqrt((global_position.x-targetX)**2 + (global_position.z-targetZ)**2)
+		#print("distance error: " + str(targetError))
 		#print("rotation error (deg): " + str(abs(global_rotation_degrees.y-targetO)))
 	
 	if c_translation.length() > 1:
