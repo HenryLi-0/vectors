@@ -12,6 +12,20 @@ This makes it more of a simulation setup, since we need to make sure the robot i
 
 ---
 
+### Features
+
+- Driving (well, this one's kinda obvious)
+- Intaking (^^^)
+- Scoring (^^^)
+- Auto Aligning to Reef Faces
+- Imperfections
+    - Lot's of features in this aren't "perfectly tuned", which means that whoever is practicing needs to check that the robot will "work"
+    - This is because robots (more often than not), aren't "perfect", meaning that drive team should be able to "double check" its work
+- **(incomplete)** VR mode
+    - Not done yet, but should be easy to implement
+
+---
+
 ### Setup
 
 You can either:
