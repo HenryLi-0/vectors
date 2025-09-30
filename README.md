@@ -18,7 +18,9 @@ You can either:
 - clone this repository, setup Godot, and build it locally (in theory)
 - go to the releases tab and find one (windows only)
 
-Additionally, if you want to edit any of the code, this one's released under MIT License, so feel free to have fun!
+Also, checkout the [`controls`](</CONTROLS.md>)!
+
+Additionally, if you want to edit any of the code, this one's released under `MIT License`, so feel free to have fun!
 
 - [The game itself](</vectors/>)
 - [The incomeplete VR setup](</vectorsTransmit/>)
