@@ -289,9 +289,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.721, 0.134, 0.066)
 shape = SubResource("BoxShape3D_gjlni")
 
-[node name="coral" parent="GroundIntake/left plate" instance=ExtResource("7_wfe60")]
-transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0.701, 0.082, -0.0910001)
-
 [node name="right plate" type="CollisionShape3D" parent="GroundIntake"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.02, 0.159, 0.066)
 shape = SubResource("BoxShape3D_gjlni")
@@ -356,6 +353,7 @@ node_b = NodePath("..")
 
 [node name="coral" parent="GroundIntakeRollers/TopRollers" instance=ExtResource("7_wfe60")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
 
 [node name="BottomRollers" type="RigidBody3D" parent="GroundIntakeRollers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
@@ -384,6 +382,7 @@ node_b = NodePath("..")
 
 [node name="coral" parent="GroundIntakeRollers/BottomRollers" instance=ExtResource("7_wfe60")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
 
 [node name="FarLeftRoller" type="RigidBody3D" parent="GroundIntakeRollers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.668, -0.053, -0.116)
