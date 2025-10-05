@@ -14,6 +14,8 @@ This makes it more of a simulation setup, since we need to make sure the robot i
 
 ### Features
 
+**You can find a video of it here! https://www.youtube.com/watch?v=lbHA3u_Wl4U** (please watch! (it very cool))
+
 - Driving (well, this one's kinda obvious)
 - Intaking (^^^)
 - Scoring (^^^)
@@ -30,7 +32,8 @@ This makes it more of a simulation setup, since we need to make sure the robot i
 
 You can either:
 - clone this repository, setup Godot, and build it locally (in theory)
-- go to the releases tab and find one (windows only)
+- go to the [releases](https://github.com/HenryLi-0/vectors/releases/) tab and find one
+    - (as of v0.1, i've only tested windows to work (on my machine))
 
 Also, checkout the [`controls`](</CONTROLS.md>)!
 
