@@ -1,6 +1,6 @@
 # vectors
 
-![](</banner.png>)
+[![](</banner.png>)](https://www.youtube.com/watch?v=lbHA3u_Wl4U)
 
 ---
 
